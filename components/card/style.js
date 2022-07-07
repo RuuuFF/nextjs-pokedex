@@ -14,12 +14,13 @@ export const Container = styled.div`
   &:hover {
     cursor: pointer;
 
-    & .image {
+    & .image-wrapper {
       transform: translateY(-4px);
     }
   }
 
-  &:active .image img {
+  &:active .nextjs-image {
+    -webkit-user-drag: none;
     transform: scale(0.98);
   }
 
@@ -29,10 +30,6 @@ export const Container = styled.div`
     justify-content: center;
     padding-left: 1.6rem;
     position: relative;
-
-    .image {
-      transition: transform 0.2s ease;
-    }
 
     .background {
       position: absolute;
@@ -62,30 +59,35 @@ export const Container = styled.div`
         transform: translate(-60%, -50%);
       }
     }
+
+    .image-wrapper {
+      transition: transform 0.2s ease;
+      user-select: none;
+    }
   }
 
-  .poke-infos {
+  .pokeinfo-container {
     display: flex;
     flex-direction: column;
     padding: 1.6rem;
-  }
 
-  h2 {
-    font-size: 1.8rem;
-  }
+    .name {
+      font-size: 1.8rem;
+    }
 
-  h3 {
-    font-size: 1.6rem;
-    font-weight: 500;
-  }
+    .id {
+      font-size: 1.4rem;
+      color: #666;
+      margin-bottom: 1.6rem;
+    }
 
-  .type {
-    font-size: 1.4rem;
-    color: #666;
-    margin-bottom: 1.6rem;
-  }
+    h3 {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
 
-  .abilities-list li {
-    font-size: 1.4rem;
+    .abilities li {
+      font-size: 1.4rem;
+    }
   }
 `;

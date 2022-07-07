@@ -1,38 +1,30 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
+import { getPokeList, PokeListProps } from "../api/pokedex";
 import Card from "../components/card";
 
+interface HomeProps {
+  pokeList: PokeListProps[];
+}
+
 export async function getStaticProps() {
-  const pokemons = [];
-  const length = 200;
-
-  for (let id = 1; id <= length; id++) {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon/" + id);
-    const data = await res.json();
-
-    pokemons.push({
-      id: data.id,
-      name: data.name,
-      type: data.types[0].type.name,
-      abilities: data.abilities,
-    });
-  }
+  const pokeList = await getPokeList();
 
   return {
     props: {
-      pokemons,
+      pokeList,
     },
   };
 }
 
-export default function Home({ pokemons }) {
+export default function Home({ pokeList }: HomeProps) {
   return (
     <div>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <Layout>
-        {pokemons.map((pokemon) => (
+        {pokeList.map((pokemon) => (
           <Card key={pokemon.name} {...pokemon} />
         ))}
       </Layout>

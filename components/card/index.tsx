@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Container } from "./style";
 
-function formatName(text) {
+function formatName(text: string) {
   return text[0].toUpperCase() + text.slice(1);
 }
 

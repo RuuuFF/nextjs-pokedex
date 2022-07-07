@@ -25,6 +25,6 @@ export const Container = styled.div`
     width: 100%;
     max-width: 96rem;
     margin: 0 auto;
-    padding: 1.2rem;
+    padding: 1.2rem 1.2rem 5.6rem 1.2rem;
   }
 `;

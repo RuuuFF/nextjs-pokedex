@@ -1,15 +1,16 @@
 export interface PokeListProps {
   id: number;
   name: string;
-  type: string;
-  abilities: {
-    ability: {
-      name: string;
-    };
+  types: {
+    name: string;
   }[];
 }
 
-const length = 200;
+interface PokeTypes {
+  type: { name: string };
+}
+
+const length = 150;
 
 export async function getPokeList(): Promise<PokeListProps[]> {
   const pokemons = [];
@@ -21,8 +22,11 @@ export async function getPokeList(): Promise<PokeListProps[]> {
     pokemons.push({
       id: data.id,
       name: data.name,
-      type: data.types[0].type.name,
-      abilities: data.abilities,
+      types: data.types.map((obj: PokeTypes) => {
+        return {
+          name: obj.type.name,
+        };
+      }),
     });
   }
 

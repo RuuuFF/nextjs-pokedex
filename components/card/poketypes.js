@@ -1,6 +1,80 @@
 import { css } from "styled-components";
 
-export const pokeTypes = css`
+export const pokeColorTypes = css`
+  &.fire {
+    background-color: #f04822;
+  }
+
+  &.ice {
+    background-color: #68bae3;
+    color: #000;
+  }
+
+  &.grass {
+    background-color: #27aa48;
+  }
+
+  &.electric {
+    background-color: #f5e614;
+    color: #000;
+  }
+
+  &.water {
+    background-color: #2d8bcf;
+  }
+
+  &.ground {
+    background-color: #b66a1e;
+  }
+
+  &.rock {
+    background-color: #858583;
+  }
+
+  &.fairy {
+    background-color: #e99ef6;
+    color: #000;
+  }
+
+  &.poison {
+    background-color: #9a38ce;
+  }
+
+  &.bug {
+    background-color: #90bb43;
+    color: #000;
+  }
+
+  &.dragon {
+    background-color: #b31116;
+  }
+
+  &.psychic {
+    background-color: #c2c75e;
+    color: #000;
+  }
+
+  &.fighting {
+    background-color: #cab384;
+    color: #000;
+  }
+
+  &.ghost {
+    background-color: #504343;
+  }
+
+  &.dark {
+    background-color: #000;
+  }
+
+  &.flying,
+  &.normal {
+    background-color: #e9e9e9;
+    color: #000;
+  }
+`;
+
+export const pokeBgTypes = css`
   &.fire {
     background-image: linear-gradient(
       45deg,
@@ -125,6 +199,15 @@ export const pokeTypes = css`
       hsl(0deg 9% 21%) 0%,
       hsl(360deg 9% 25%) 50%,
       hsl(0deg 9% 30%) 100%
+    );
+  }
+
+  &.dark {
+    background-image: linear-gradient(
+      45deg,
+      hsl(0deg 0% 0%) 0%,
+      hsl(259deg 49% 18%) 50%,
+      hsl(262deg 33% 30%) 100%
     );
   }
 

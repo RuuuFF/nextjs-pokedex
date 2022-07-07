@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { pokeTypes } from "./poketypes";
+import { pokeBgTypes, pokeColorTypes } from "./poketypes";
 
 export const Container = styled.div`
   display: flex;
@@ -35,8 +35,9 @@ export const Container = styled.div`
       position: absolute;
       content: "";
       inset: 0 2.4rem 0 0;
+      background-repeat: no-repeat;
 
-      ${pokeTypes}
+      ${pokeBgTypes}
 
       &::before {
         width: 180px;
@@ -77,8 +78,9 @@ export const Container = styled.div`
 
     .id {
       font-size: 1.4rem;
-      color: #666;
+      color: #999;
       margin-bottom: 1.6rem;
+      font-weight: 600;
     }
 
     h3 {
@@ -88,6 +90,24 @@ export const Container = styled.div`
 
     .abilities li {
       font-size: 1.4rem;
+    }
+
+    .types-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.8rem;
+
+      .type {
+        color: #f1f1f1;
+        text-align: center;
+        font-size: 1.4rem;
+        width: 80px;
+        padding: 0.2rem 0;
+        border-radius: 4px;
+
+        ${pokeColorTypes}
+      }
     }
   }
 `;

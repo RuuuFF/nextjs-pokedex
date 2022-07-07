@@ -11,8 +11,16 @@ export const Container = styled.div`
   overflow: hidden;
   box-shadow: 5px 5px 15px #00000044;
 
-  &:hover .image {
-    transform: translateY(-4px);
+  &:hover {
+    cursor: pointer;
+
+    & .image {
+      transform: translateY(-4px);
+    }
+  }
+
+  &:active .image img {
+    transform: scale(0.98);
   }
 
   .image-container {

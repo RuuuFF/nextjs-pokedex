@@ -7,7 +7,7 @@ function formatText(text: string) {
 }
 
 export default function Card({ id, name, types }: PokeListProps) {
-  const mainType = types[0].name;
+  const mainType = types[0];
 
   return (
     <Container>
@@ -29,10 +29,10 @@ export default function Card({ id, name, types }: PokeListProps) {
         <p className="id">N&ordm;{id.toString().padStart(3, "0")}</p>
 
         <div className="types-container">
-          {types.map((type, index) => {
+          {types.map((type) => {
             return (
-              <div key={index} className={`type ${type.name}`}>
-                {formatText(type.name)}
+              <div key={type} className={`type ${type}`}>
+                {formatText(type)}
               </div>
             );
           })}

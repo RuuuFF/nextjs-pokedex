@@ -2,7 +2,7 @@ import { Container } from "./style";
 import Head from "next/head";
 import Image from "next/dist/client/image";
 
-export const siteTitle = "Next.js Pokedex | ruuuff";
+export const siteTitle = "Next.js Pokédex | ruuuff";
 
 export default function Layout({ children }) {
   return (

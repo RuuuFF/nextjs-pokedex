@@ -1,29 +1,25 @@
-const URL = "https://pokeapi.co/api/v2/pokemon/";
-const length = 150;
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
+const length = 100;
 
-export interface PokeListProps {
+export interface PokemonListProps {
   id: number;
   name: string;
   types: string[];
 }
 
-interface PokeTypes {
-  type: {
-    name: string;
-  };
-}
-
-export async function getPokeList(): Promise<PokeListProps[]> {
+export async function getPokemonList(): Promise<PokemonListProps[]> {
   const pokemons = [];
 
   for (let id = 1; id <= length; id++) {
-    const res = await fetch(URL + id);
+    const res = await fetch(BASE_URL + id);
     const data = await res.json();
 
     pokemons.push({
       id: data.id,
       name: data.name,
-      types: data.types.map((obj: PokeTypes) => obj.type.name),
+      types: data.types.map((obj: { type: { name: string } }) => {
+        return obj.type.name;
+      }),
     });
   }
 
@@ -34,12 +30,12 @@ export async function getAllPokemonId() {
   const pokemons = [];
 
   for (let id = 1; id <= length; id++) {
-    const res = await fetch(URL + id);
+    const res = await fetch(BASE_URL + id);
     const data = await res.json();
 
     pokemons.push({
       params: {
-        id: data.id.toString(),
+        pokemon: data.name,
       },
     });
   }
@@ -47,8 +43,8 @@ export async function getAllPokemonId() {
   return pokemons;
 }
 
-export async function getPokemon(id: string | number) {
-  const res = await fetch(URL + id);
+export async function getPokemon(pokemon: string | number) {
+  const res = await fetch(BASE_URL + pokemon);
   const data = await res.json();
 
   return data;

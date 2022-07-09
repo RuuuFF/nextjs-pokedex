@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { pokeBgTypes, pokeColorTypes } from "./poketypes";
 
 export const Container = styled.div`
-  display: flex;
   max-width: 30rem;
   min-height: 20rem;
   width: 100%;
@@ -10,6 +9,12 @@ export const Container = styled.div`
   border-radius: 0.8rem;
   overflow: hidden;
   box-shadow: 5px 5px 15px #00000044;
+
+  .wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
 
   &:hover {
     cursor: pointer;

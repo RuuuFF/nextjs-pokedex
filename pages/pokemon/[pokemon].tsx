@@ -1,5 +1,6 @@
-import { getAllPokemonId, getPokemon } from "../../api/pokedex";
+import { getAllPokemonId, getPokemon } from "../../utils/pokedex";
 import Layout from "../../components/layout";
+import PageCard from "../../components/pageCard/pageCard";
 
 export async function getStaticPaths() {
   const paths = await getAllPokemonId();
@@ -11,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const pokemon = await getPokemon(params.id);
+  const pokemon = await getPokemon(params.pokemon);
 
   return {
     props: {
@@ -23,7 +24,7 @@ export async function getStaticProps({ params }) {
 export default function PokemonPage({ pokemon }) {
   return (
     <Layout>
-      <h1>{pokemon.name}</h1>
+      <PageCard {...pokemon} />
     </Layout>
   );
 }

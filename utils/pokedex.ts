@@ -7,8 +7,14 @@ export interface PokemonListProps {
   types: string[];
 }
 
+interface PokemonPaths {
+  params: {
+    pokemon: string;
+  };
+}
+
 export async function getPokemonList(): Promise<PokemonListProps[]> {
-  const pokemons = [];
+  const pokemons: PokemonListProps[] = [];
 
   for (let id = 1; id <= length; id++) {
     const res = await fetch(BASE_URL + id);
@@ -27,7 +33,7 @@ export async function getPokemonList(): Promise<PokemonListProps[]> {
 }
 
 export async function getAllPokemonId() {
-  const pokemons = [];
+  const pokemons: PokemonPaths[] = [];
 
   for (let id = 1; id <= length; id++) {
     const res = await fetch(BASE_URL + id);
@@ -43,7 +49,7 @@ export async function getAllPokemonId() {
   return pokemons;
 }
 
-export async function getPokemon(pokemon: string | number) {
+export async function getPokemon(pokemon: string) {
   const res = await fetch(BASE_URL + pokemon);
   const data = await res.json();
 

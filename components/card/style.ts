@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { pokeBgTypes, pokeColorTypes } from "./poketypes";
+import { pokeBgTypes, pokeColorTypes } from "../../styles/poketypes";
 
 export const Container = styled.div`
   max-width: 30rem;

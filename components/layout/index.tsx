@@ -1,6 +1,6 @@
-import { Container } from "./style";
 import Head from "next/head";
 import Image from "next/dist/client/image";
+import { Container, Header, Main } from "./style";
 
 export const siteTitle = "Next.js Pokédex | ruuuff";
 
@@ -22,7 +22,7 @@ export default function Layout({ children }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header>
+      <Header>
         <Image
           className="logo"
           src="/pokemon-logo.png"
@@ -30,8 +30,8 @@ export default function Layout({ children }) {
           height={73.42}
           width={200}
         />
-      </header>
-      <main>{children}</main>
+      </Header>
+      <Main>{children}</Main>
     </Container>
   );
 }

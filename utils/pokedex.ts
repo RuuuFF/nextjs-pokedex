@@ -14,12 +14,12 @@ interface PokemonPaths {
 }
 
 export interface PokemonProps extends PokemonListProps {
+  weight: number;
+  abilities: string[];
   stats: {
     base_stat: number;
     name: string;
   }[];
-  weight: number;
-  abilities: string[];
   evolution_chain: {
     id: string;
     name: string;
@@ -82,19 +82,18 @@ export async function getPokemon(pokemon: string): Promise<PokemonProps> {
   let evoData = evolutionData.chain;
 
   do {
+    const id = evoData.species.url || "";
+    const name = evoData.species.name || "";
     let numberOfEvolutions = evoData["evolves_to"].length;
 
-    evoChain.push({
-      id: getIdFromURL(evoData.species.url),
-      name: evoData.species.name,
-    });
+    evoChain.push({ id: getIdFromURL(id), name });
 
     if (numberOfEvolutions > 1) {
       for (let index = 1; index < numberOfEvolutions; index++) {
-        evoChain.push({
-          id: getIdFromURL(evoData.evolves_to[index].species.id),
-          name: evoData.evolves_to[index].species.name,
-        });
+        const id = evoData.evolves_to[index].species.id || "";
+        const name = evoData.evolves_to[index].species.name || "";
+
+        evoChain.push({ id: getIdFromURL(id), name });
       }
     }
 

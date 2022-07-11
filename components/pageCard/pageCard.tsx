@@ -1,12 +1,16 @@
 import Image from "next/image";
 import { formatId, formatText } from "../../utils";
-import { Div } from "../../styles/customEl";
+import { Div } from "../../styles/customDiv";
 import { Container, Header } from "./style";
 
-export default function PageCard(props) {
+export default function PageCard(props: any) {
   const { id, name } = props;
   const formattedName = formatText(name);
   const formattedId = formatId(id);
+
+  const width = "100px,, 50px";
+  const height = "100px,, 50px";
+  const mediaqueries = "auto, 1280px, 720px";
 
   return (
     <Container>
@@ -24,11 +28,36 @@ export default function PageCard(props) {
       />
       <Div
         display="flex"
-        bg={["purple", "blue", "orange"]}
-        width={["300px", "150px", "75px"]}
-        height={["300px", "150px", "75px"]}
-        breakpoints={["default", 720, 420]}
-      ></Div>
+        flexDirection="column, row, row-reverse"
+        flexWrap="wrap"
+        alignItems="center"
+        justifyContent="center"
+        bg="gray"
+        width="100%"
+        maxWidth="600px,, 80%"
+        height="300px,, 150px"
+        mx="auto"
+        breakpoints={mediaqueries}
+      >
+        <Div
+          width={width}
+          height={height}
+          bg="#00f505"
+          breakpoints={mediaqueries}
+        ></Div>
+        <Div
+          width={width}
+          height={height}
+          bg="#0010f5"
+          breakpoints={mediaqueries}
+        ></Div>
+        <Div
+          width={width}
+          height={height}
+          bg="#15afe1"
+          breakpoints={mediaqueries}
+        ></Div>
+      </Div>
     </Container>
   );
 }

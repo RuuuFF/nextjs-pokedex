@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const defaultBreakpointType = "max-width";
 const defaultSeparator = ",";
+const ignoreValues = ["---", "null"];
 
 interface ElementProps {
   display?: string;
@@ -90,13 +91,13 @@ const styleKeys = {
   minWidth: "min-width",
   maxWidth: "max-width",
   opacity: "opacity",
-};
+} as const;
 
 function getCSSDeclaration(props: ElementProps, key: string, index?: number) {
   const separator = props?.stringSeparator || defaultSeparator;
   const property: string = styleKeys[key];
   let value: string = props[key].split(separator)[index || 0]?.trim();
-  if (!value) return "";
+  if (!value || ignoreValues.includes(value)) return "";
 
   if (["mx", "my", "px", "py"].includes(key)) {
     const [sideA, sideB] = styleKeys[key];
@@ -148,8 +149,6 @@ export const Div = styled("div").withConfig({
   ${(props) => {
     const defaultStyle = createDefaultStyle(props);
     const mediaQueryStyle = createMediaQueries(props);
-
-    console.log(mediaQueryStyle);
 
     return defaultStyle + mediaQueryStyle;
   }}

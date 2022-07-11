@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+const defaultBreakpoints = "";
 const defaultBreakpointType = "max-width";
 const defaultSeparator = ",";
 const ignoreValues = ["---", "null"];
@@ -93,10 +94,14 @@ const styleKeys = {
   opacity: "opacity",
 } as const;
 
+function splitBreakpoints(separator: string, string: string) {
+  return string?.split(separator).map((bp) => bp.trim());
+}
+
 function getCSSDeclaration(props: ElementProps, key: string, index?: number) {
   const separator = props?.stringSeparator || defaultSeparator;
   const property: string = styleKeys[key];
-  let value: string = props[key].split(separator)[index || 0]?.trim();
+  const value: string = props[key].split(separator)[index || 0]?.trim();
   if (!value || ignoreValues.includes(value)) return "";
 
   if (["mx", "my", "px", "py"].includes(key)) {
@@ -120,26 +125,30 @@ function createDefaultStyle(props: ElementProps) {
 }
 
 function createMediaQueries(props: ElementProps) {
-  if (!props?.breakpoints) return "";
+  if (!props?.breakpoints && !defaultBreakpoints) return "";
   const separator = props?.stringSeparator || defaultSeparator;
-  const breakpoints = props.breakpoints.split(separator).map((bp) => bp.trim());
+  const breakpoints =
+    splitBreakpoints(separator, props?.breakpoints) ||
+    splitBreakpoints(separator, defaultBreakpoints);
   const breakpointType = props?.breakpointType || defaultBreakpointType;
-  let style = "";
+  let mediaquery = "";
 
   breakpoints.forEach((breakpoint, index) => {
-    if (index === 0) return;
-    style += `@media (${breakpointType}: ${breakpoint}) {\n`;
+    if (index === 0) return "";
+    let declarations = "";
 
     for (const key in props) {
       if (Object.keys(styleKeys).includes(key)) {
-        style += getCSSDeclaration(props, key, index);
+        declarations += getCSSDeclaration(props, key, index);
       }
     }
 
-    style += "}\n";
+    if (declarations) {
+      mediaquery += `@media (${breakpointType}: ${breakpoint}) {\n${declarations}}\n`;
+    }
   });
 
-  return style;
+  return mediaquery;
 }
 
 export const Div = styled("div").withConfig({

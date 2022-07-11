@@ -10,6 +10,7 @@ export default function Evolutions({ evolutions, type }) {
       <Div
         display="flex"
         justifyContent="center"
+        alignItems="center"
         flexWrap="wrap"
         gap="3.2rem"
         py="3.2rem"
@@ -27,6 +28,7 @@ export default function Evolutions({ evolutions, type }) {
                   <div className="pokeball"></div>
                   <div className="image-wrapper">
                     <Image
+                      alt={name}
                       src={`https://cdn.traction.one/pokedex/pokemon/${evolution.id}.png`}
                       width={150}
                       height={150}

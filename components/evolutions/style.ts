@@ -18,8 +18,7 @@ export const Container = styled.div`
         border-radius: 50%;
         transition: border 0.2s ease;
 
-        &:after,
-        &:before {
+        &:after {
           position: absolute;
           content: "";
           left: 50%;
@@ -30,16 +29,12 @@ export const Container = styled.div`
           transform: translate(-50%, -50%);
           transition: background-color 0.2s ease;
         }
-
-        &:before {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-        }
       }
 
       .image-wrapper {
         transition: transform 0.2s ease;
+        width: 15rem;
+        height: 15rem;
       }
     }
 

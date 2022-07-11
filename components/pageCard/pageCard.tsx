@@ -22,6 +22,7 @@ export default function PageCard(props: PokemonProps) {
 
       <Image
         className="nextjs-image"
+        alt={name}
         src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedId}.png`}
         width={300}
         height={300}

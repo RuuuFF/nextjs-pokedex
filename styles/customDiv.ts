@@ -46,6 +46,9 @@ interface ElementProps {
   minWidth?: string;
   maxWidth?: string;
   opacity?: string;
+  borderRadius?: string;
+  border?: string;
+  overflow?: string;
   breakpoints?: string;
   breakpointType?: "min-width" | "max-width";
   stringSeparator?: string;
@@ -92,6 +95,9 @@ const styleKeys = {
   minWidth: "min-width",
   maxWidth: "max-width",
   opacity: "opacity",
+  borderRadius: "border-radius",
+  border: "border",
+  overflow: "overflow",
 } as const;
 
 function splitBreakpoints(separator: string, string: string) {
@@ -116,7 +122,7 @@ function createDefaultStyle(props: ElementProps) {
   let style = "";
 
   for (const key in props) {
-    if (Object.keys(styleKeys).includes(key)) {
+    if (styleKeys.hasOwnProperty(key)) {
       style += getCSSDeclaration(props, key);
     }
   }
@@ -138,7 +144,7 @@ function createMediaQueries(props: ElementProps) {
     let declarations = "";
 
     for (const key in props) {
-      if (Object.keys(styleKeys).includes(key)) {
+      if (styleKeys.hasOwnProperty(key)) {
         declarations += getCSSDeclaration(props, key, index);
       }
     }

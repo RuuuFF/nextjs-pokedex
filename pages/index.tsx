@@ -1,32 +1,30 @@
 import Head from "next/head";
-import Layout, { siteTitle } from "../components/layout";
 import { getPokemonList, PokemonListProps } from "../utils/pokedex";
-import Card from "../components/card";
+import Layout, { siteTitle } from "../components/layout";
+import PokemonCardList from "../components/pokemonCardList";
 
 interface HomeProps {
-  pokeList: PokemonListProps[];
+  pokemonList: PokemonListProps[];
 }
 
 export async function getStaticProps() {
-  const pokeList = await getPokemonList();
+  const pokemonList = await getPokemonList();
 
   return {
     props: {
-      pokeList,
+      pokemonList,
     },
   };
 }
 
-export default function Home({ pokeList }: HomeProps) {
+export default function Home({ pokemonList }: HomeProps) {
   return (
     <div>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <Layout>
-        {pokeList.map((pokemon) => (
-          <Card key={pokemon.name} {...pokemon} />
-        ))}
+      <Layout home>
+        <PokemonCardList pokemonList={pokemonList} />
       </Layout>
     </div>
   );

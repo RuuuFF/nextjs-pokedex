@@ -47,7 +47,12 @@ export default function Layout({
           ) : (
             <Div className="backToHome">
               <Link href="/">
-                <a>Back to home</a>
+                <a>
+                  Back{" "}
+                  <Div display="inline, none" breakpoints="auto, 480px">
+                    to home
+                  </Div>
+                </a>
               </Link>
             </Div>
           )}

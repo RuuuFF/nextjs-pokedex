@@ -24,8 +24,7 @@ export const Container = styled.div`
     }
   }
 
-  &:active .nextjs-image {
-    -webkit-user-drag: none;
+  &:active img {
     transform: scale(0.98);
   }
 
@@ -68,7 +67,6 @@ export const Container = styled.div`
 
     .image-wrapper {
       transition: transform 0.2s ease;
-      user-select: none;
     }
   }
 

@@ -15,7 +15,6 @@ export default function Card({ id, name, types }: PokemonListProps) {
             <div className={`background ${mainType}`}></div>
             <div className="image-wrapper">
               <Image
-                className="nextjs-image"
                 src={`https://cdn.traction.one/pokedex/pokemon/${id}.png`}
                 alt={name}
                 width={120}

@@ -29,9 +29,9 @@ export default function Evolutions({ evolutions, type }) {
                   <div className="image-wrapper">
                     <Image
                       alt={name}
-                      src={`https://cdn.traction.one/pokedex/pokemon/${evolution.id}.png`}
                       width={150}
                       height={150}
+                      src={`https: //cdn.traction.one/pokedex/pokemon/${evolution.id}.png`}
                     />
                   </div>
                 </div>

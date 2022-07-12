@@ -17,12 +17,17 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
 
   li {
     list-style: none;
+  }
+
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
   }
 `;

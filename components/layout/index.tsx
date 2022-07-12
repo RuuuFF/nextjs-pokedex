@@ -24,7 +24,6 @@ export default function Layout({ children }) {
       </Head>
       <Header>
         <Image
-          className="logo"
           src="/pokemon-logo.png"
           alt="Pokémon Logo"
           height={73.42}

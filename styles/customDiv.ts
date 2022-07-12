@@ -47,6 +47,8 @@ interface ElementProps {
   lh?: string;
   fontFamily?: string;
   fontWeight?: string;
+  textAlign?: string;
+  textOverflow?: string;
   height?: string;
   minHeight?: string;
   width?: string;
@@ -105,6 +107,8 @@ const styleKeys = {
   lh: "line-height",
   fontFamily: "font-family",
   fontWeight: "font-weight",
+  textAlign: "text-align",
+  textOverflow: "text-overflow",
   height: "height",
   minHeight: "min-height",
   width: "width",

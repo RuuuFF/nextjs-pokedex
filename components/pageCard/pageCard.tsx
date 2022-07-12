@@ -10,12 +10,13 @@ export default function PageCard(props: PokemonProps) {
   const { id, name, types, evolution_chain } = props;
   const formattedName = formatText(name);
   const formattedId = formatId(id);
+  const pageTitle = `${formattedName} | Next.js Pokédex`;
   const mainType = types[0];
 
   return (
     <Container>
       <Head>
-        <title>{formattedName} | Next.js Pokédex</title>
+        <title>{pageTitle}</title>
       </Head>
 
       <Header>

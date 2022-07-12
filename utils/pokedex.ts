@@ -7,12 +7,6 @@ export interface PokemonListProps {
   types: string[];
 }
 
-interface PokemonPaths {
-  params: {
-    pokemon: string;
-  };
-}
-
 export interface PokemonProps extends PokemonListProps {
   weight: number;
   abilities: string[];
@@ -24,6 +18,13 @@ export interface PokemonProps extends PokemonListProps {
     id: string;
     name: string;
   }[];
+}
+
+interface GetPokemonProps {
+  pokemon?: PokemonProps;
+  error?: {
+    query: string;
+  };
 }
 
 function getIdFromURL(url: string) {
@@ -49,32 +50,17 @@ export async function getPokemonList(): Promise<PokemonListProps[]> {
   return pokemons;
 }
 
-export async function getAllPokemonId(): Promise<PokemonPaths[]> {
-  const pokemons: PokemonPaths[] = [];
-
-  for (let id = 1; id <= length; id++) {
-    const res = await fetch(BASE_URL + id);
-    const data = await res.json();
-
-    pokemons.push({
-      params: {
-        pokemon: data.name,
-      },
-    });
-  }
-
-  return pokemons;
-}
-
-export async function getPokemon(pokemon: string): Promise<PokemonProps> {
-  const pokeRes = await fetch(BASE_URL + pokemon);
+export async function getPokemon(query: string): Promise<GetPokemonProps> {
+  const pokeRes = await fetch(BASE_URL + query);
+  const errorCode = !pokeRes.ok;
+  if (errorCode) return { error: { query } };
   const pokeData = await pokeRes.json();
 
   const SPECIES_URL = pokeData.species.url;
   const speciesRes = await fetch(SPECIES_URL);
   const speciesData = await speciesRes.json();
 
-  const EVOLUTION_CHAIN_URL = speciesData["evolution_chain"]?.url;
+  const EVOLUTION_CHAIN_URL = speciesData["evolution_chain"].url;
   const evolutionRes = await fetch(EVOLUTION_CHAIN_URL);
   const evolutionData = await evolutionRes.json();
 
@@ -82,16 +68,16 @@ export async function getPokemon(pokemon: string): Promise<PokemonProps> {
   let evoData = evolutionData.chain;
 
   do {
-    const id = evoData.species.url || "";
-    const name = evoData.species.name || "";
+    const id = evoData.species.url;
+    const name = evoData.species.name;
     let numberOfEvolutions = evoData["evolves_to"].length;
 
     evoChain.push({ id: getIdFromURL(id), name });
 
     if (numberOfEvolutions > 1) {
       for (let index = 1; index < numberOfEvolutions; index++) {
-        const id = evoData.evolves_to[index].species.id || "";
-        const name = evoData.evolves_to[index].species.name || "";
+        const id = evoData["evolves_to"][index].species.url;
+        const name = evoData["evolves_to"][index].species.name;
 
         evoChain.push({ id: getIdFromURL(id), name });
       }
@@ -100,7 +86,7 @@ export async function getPokemon(pokemon: string): Promise<PokemonProps> {
     evoData = evoData["evolves_to"][0];
   } while (!!evoData && evoData.hasOwnProperty("evolves_to"));
 
-  const poke: PokemonProps = {
+  const pokemon: PokemonProps = {
     id: pokeData.id,
     name: pokeData.name,
     types: pokeData.types.map((obj: any) => obj.type.name),
@@ -113,5 +99,5 @@ export async function getPokemon(pokemon: string): Promise<PokemonProps> {
     evolution_chain: evoChain,
   };
 
-  return poke;
+  return { pokemon };
 }

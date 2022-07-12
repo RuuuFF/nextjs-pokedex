@@ -9,7 +9,14 @@ export default function ErrorMessage({ error }) {
         <title>Error | Next.js Pokédex</title>
       </Head>
 
-      <Div bg="#fff" mt="2.4rem" p="3.2rem" borderRadius="0.8rem">
+      <Div
+        bg="#fff"
+        mt="1.6rem"
+        mx="auto"
+        p="3.2rem"
+        maxWidth="360px"
+        borderRadius="0.8rem"
+      >
         <Div maxWidth="300px">
           <Div
             fontSize="2.4rem"

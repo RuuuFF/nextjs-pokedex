@@ -12,6 +12,7 @@ export const Header = styled.header`
     a {
       font-size: 1.6rem;
       font-weight: 500;
+      color: #20336e;
 
       &:hover {
         text-decoration: underline;

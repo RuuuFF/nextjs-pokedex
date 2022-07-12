@@ -1,5 +1,5 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
-const length = 100;
+export const baseLength = 12;
 
 export interface PokemonListProps {
   id: number;
@@ -33,10 +33,14 @@ function getIdFromURL(url: string) {
   return id;
 }
 
-export async function getPokemonList(): Promise<PokemonListProps[]> {
+export async function getPokemonList(
+  startFrom?: number,
+  length?: number
+): Promise<PokemonListProps[]> {
   const pokemonList: PokemonListProps[] = [];
+  const max = length || baseLength;
 
-  for (let id = 1; id <= length; id++) {
+  for (let id = startFrom || 1; id <= max; id++) {
     const res = await fetch(BASE_URL + id);
     const data = await res.json();
 
@@ -60,31 +64,33 @@ export async function getPokemon(query: string): Promise<GetPokemonProps> {
   const speciesRes = await fetch(SPECIES_URL);
   const speciesData = await speciesRes.json();
 
-  const EVOLUTION_CHAIN_URL = speciesData["evolution_chain"].url;
-  const evolutionRes = await fetch(EVOLUTION_CHAIN_URL);
-  const evolutionData = await evolutionRes.json();
-
+  const EVOLUTION_CHAIN_URL = speciesData["evolution_chain"]?.url;
   const evoChain = [];
-  let evoData = evolutionData.chain;
 
-  do {
-    const id = evoData.species.url;
-    const name = evoData.species.name;
-    let numberOfEvolutions = evoData["evolves_to"].length;
+  if (EVOLUTION_CHAIN_URL) {
+    const evolutionRes = await fetch(EVOLUTION_CHAIN_URL);
+    const evolutionData = await evolutionRes.json();
+    let evoData = evolutionData.chain;
 
-    evoChain.push({ id: getIdFromURL(id), name });
+    do {
+      const id = evoData.species.url;
+      const name = evoData.species.name;
+      let numberOfEvolutions = evoData["evolves_to"].length;
 
-    if (numberOfEvolutions > 1) {
-      for (let index = 1; index < numberOfEvolutions; index++) {
-        const id = evoData["evolves_to"][index].species.url;
-        const name = evoData["evolves_to"][index].species.name;
+      evoChain.push({ id: getIdFromURL(id), name });
 
-        evoChain.push({ id: getIdFromURL(id), name });
+      if (numberOfEvolutions > 1) {
+        for (let index = 1; index < numberOfEvolutions; index++) {
+          const id = evoData["evolves_to"][index].species.url;
+          const name = evoData["evolves_to"][index].species.name;
+
+          evoChain.push({ id: getIdFromURL(id), name });
+        }
       }
-    }
 
-    evoData = evoData["evolves_to"][0];
-  } while (!!evoData && evoData.hasOwnProperty("evolves_to"));
+      evoData = evoData["evolves_to"][0];
+    } while (!!evoData && evoData.hasOwnProperty("evolves_to"));
+  }
 
   const pokemon: PokemonProps = {
     id: pokeData.id,

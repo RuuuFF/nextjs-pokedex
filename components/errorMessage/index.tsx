@@ -6,7 +6,7 @@ export default function ErrorMessage({ error }) {
   return (
     <>
       <Head>
-        <title>Error | Pokédex</title>
+        <title>Error | Next.js Pokédex</title>
       </Head>
 
       <Div bg="#fff" mt="2.4rem" p="3.2rem" borderRadius="0.8rem">

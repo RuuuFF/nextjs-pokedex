@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Head from "next/head";
 import { PokemonProps } from "../../utils/pokedex";
 import { formatId, formatText } from "../../utils";
 // import { Div } from "../../styles/customDiv";
@@ -13,13 +14,16 @@ export default function PageCard(props: PokemonProps) {
 
   return (
     <Container>
+      <Head>
+        <title>{formattedName} | Next.js Pokédex</title>
+      </Head>
+
       <Header>
         <h1 className="name">
           {formattedName + " "}
           <span className="id">N&ordm;{formattedId}</span>
         </h1>
       </Header>
-
       <Image
         className="nextjs-image"
         alt={name}

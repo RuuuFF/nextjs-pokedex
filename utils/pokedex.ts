@@ -34,24 +34,24 @@ function getIdFromURL(url: string) {
 }
 
 export async function getPokemonList(): Promise<PokemonListProps[]> {
-  const pokemons: PokemonListProps[] = [];
+  const pokemonList: PokemonListProps[] = [];
 
   for (let id = 1; id <= length; id++) {
     const res = await fetch(BASE_URL + id);
     const data = await res.json();
 
-    pokemons.push({
+    pokemonList.push({
       id: data.id,
       name: data.name,
       types: data.types.map((obj: any) => obj.type.name),
     });
   }
 
-  return pokemons;
+  return pokemonList;
 }
 
 export async function getPokemon(query: string): Promise<GetPokemonProps> {
-  const pokeRes = await fetch(BASE_URL + query);
+  const pokeRes = await fetch(BASE_URL + query.toLowerCase());
   const errorCode = !pokeRes.ok;
   if (errorCode) return { error: { query } };
   const pokeData = await pokeRes.json();

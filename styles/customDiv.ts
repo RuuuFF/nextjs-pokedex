@@ -29,6 +29,7 @@ interface ElementProps {
   ml?: string;
   my?: string;
   mx?: string;
+  m?: string;
   margin?: string;
   pt?: string;
   pr?: string;
@@ -36,15 +37,23 @@ interface ElementProps {
   pl?: string;
   py?: string;
   px?: string;
+  p?: string;
   padding?: string;
   bg?: string;
   color?: string;
+  fontSize?: string;
+  fs?: string;
+  lineHeight?: string;
+  lh?: string;
+  fontFamily?: string;
+  fontWeight?: string;
   height?: string;
   minHeight?: string;
-  maxHeight?: string;
   width?: string;
+  maxHeight?: string;
   minWidth?: string;
   maxWidth?: string;
+  aspectRatio?: string;
   opacity?: string;
   borderRadius?: string;
   border?: string;
@@ -78,6 +87,7 @@ const styleKeys = {
   ml: "margin-left",
   mx: ["margin-left", "margin-right"],
   my: ["margin-top", "margin-bottom"],
+  m: "margin",
   margin: "margin",
   pt: "padding-top",
   pr: "padding-right",
@@ -85,15 +95,23 @@ const styleKeys = {
   pl: "padding-left",
   px: ["padding-left", "padding-right"],
   py: ["padding-top", "padding-bottom"],
+  p: "padding",
   padding: "padding",
   bg: "background",
   color: "color",
+  fontSize: "font-size",
+  fs: "font-size",
+  lineHeight: "line-height",
+  lh: "line-height",
+  fontFamily: "font-family",
+  fontWeight: "font-weight",
   height: "height",
   minHeight: "min-height",
-  maxHeight: "max-height",
   width: "width",
+  maxHeight: "max-height",
   minWidth: "min-width",
   maxWidth: "max-width",
+  aspectRatio: "aspect-ratio",
   opacity: "opacity",
   borderRadius: "border-radius",
   border: "border",

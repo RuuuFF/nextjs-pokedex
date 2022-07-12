@@ -17,7 +17,7 @@ export default function ErrorMessage({ error }) {
             textOverflow="ellipsis"
             overflow="hidden"
           >
-            Can't find "{error.query}"
+            Can&apos;t find &quot;{error.query}&quot;
           </Div>
 
           <Div mt="3.2rem" mx="auto">

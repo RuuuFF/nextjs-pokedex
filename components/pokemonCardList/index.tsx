@@ -35,6 +35,9 @@ export default function PokemonCardList({ pokemonList }) {
       >
         {pokeArray.map(({ id, name, types }: PokemonListProps) => {
           const mainType = types[0];
+          const formattedName = formatText(name);
+          const formattedId = formatId(id);
+          const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedId}.png`;
 
           return (
             <Card key={id}>
@@ -47,18 +50,13 @@ export default function PokemonCardList({ pokemonList }) {
                       </div>
                     </div>
                     <div className="image-wrapper">
-                      <Image
-                        src={`https://cdn.traction.one/pokedex/pokemon/${id}.png`}
-                        alt={name}
-                        width={120}
-                        height={120}
-                      />
+                      <Image src={image} alt={name} width={120} height={120} />
                     </div>
                   </div>
 
                   <Div display="flex" flexDirection="column" p="1.6rem">
-                    <h2 className="name">{formatText(name)}</h2>
-                    <p className="id">N&ordm;{formatId(id)}</p>
+                    <h2 className="name">{formattedName}</h2>
+                    <p className="id">N&ordm;{formattedId}</p>
 
                     <Div display="flex" flexDirection="column" gap="0.8rem">
                       {types.map((type) => (

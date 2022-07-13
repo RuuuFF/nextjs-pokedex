@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { pokeBgTypes } from "../../styles/poketypes";
+import { pokemonColorTypes } from "../../styles/pokemonColors";
 
 export const Container = styled.div`
   .card {
     padding: 1.6rem;
     border-radius: 16px;
-    ${pokeBgTypes}
+    ${pokemonColorTypes}
 
     .image-container {
       position: relative;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { pokemonColorTypes } from "../../styles/pokemonColors";
 
 export const Card = styled.div`
@@ -58,8 +58,8 @@ export const Card = styled.div`
       border-radius: inherit;
       transform: translate(-50%, -50%);
 
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         background-color: currentColor;
         position: absolute;
         content: "";
@@ -70,7 +70,7 @@ export const Card = styled.div`
         transform: translate(0, -50%);
       }
 
-      &:after {
+      &::after {
         left: auto;
         right: 100%;
       }
@@ -130,5 +130,40 @@ export const Button = styled.button`
 
   &:active {
     transform: scale(0.98);
+  }
+`;
+
+const rotate = keyframes`
+  from { transform: rotate(0deg) }
+  to { transform: rotate(360deg) }
+`;
+
+export const Pokeball = styled.div`
+  position: relative;
+  background: linear-gradient(to bottom, red 50%, white 50%);
+  width: 3.8rem;
+  height: 3.8rem;
+  border-radius: 50%;
+  box-shadow: 2px 2px 15px #00000088;
+  animation: ${rotate} 2s linear infinite;
+
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    transform: translate(-50%, -50%);
+  }
+
+  &::after {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #000;
   }
 `;

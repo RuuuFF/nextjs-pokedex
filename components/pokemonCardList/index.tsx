@@ -8,17 +8,20 @@ import {
 } from "../../utils/pokedex";
 import { formatText, formatId } from "../../utils";
 import { Div } from "../../styles/customDiv";
-import { Card, Button } from "./style";
+import { Card, Button, Pokeball } from "./style";
 
 export default function PokemonCardList({ pokemonList }) {
   const [pokeArray, setPokeArray] = useState(pokemonList);
   const [startFrom, setStartFrom] = useState(baseLength + 1);
+  const [loading, setLoading] = useState(false);
   const length = 23;
 
   async function fetchPokemons() {
+    setLoading(true);
     const morePokemons = await getPokemonList(startFrom, startFrom + length);
-    setStartFrom(startFrom + length + 1);
     setPokeArray([...pokeArray, ...morePokemons]);
+    setStartFrom(startFrom + length + 1);
+    setLoading(false);
   }
 
   return (
@@ -72,7 +75,11 @@ export default function PokemonCardList({ pokemonList }) {
         })}
       </Div>
       <Div display="flex" justifyContent="center" mt="4rem">
-        <Button onClick={fetchPokemons}>LOAD MORE</Button>
+        {!loading ? (
+          <Button onClick={fetchPokemons}>LOAD MORE</Button>
+        ) : (
+          <Pokeball />
+        )}
       </Div>
     </div>
   );

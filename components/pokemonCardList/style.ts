@@ -21,6 +21,7 @@ export const Card = styled.div`
     align-items: center;
     padding-left: 1.6rem;
     position: relative;
+    min-width: 13.6rem;
   }
 
   .image-wrapper {

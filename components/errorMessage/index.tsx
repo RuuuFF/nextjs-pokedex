@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Div } from "../../styles/customDiv";
 
 export default function ErrorMessage({ error }) {
-  const message = `Can&apos;t find &quot;${error.query}&quot;`;
+  const message = `Can\'t find \"${error.query}\"`;
   return (
     <Div
       bg="#fff"

@@ -141,11 +141,11 @@ const rotate = keyframes`
 
 export const Pokeball = styled.div`
   position: relative;
-  background: linear-gradient(to bottom, red 50%, white 50%);
+  background: linear-gradient(to bottom, #f00 50%, #fff 50%);
   width: 3.8rem;
   height: 3.8rem;
   border-radius: 50%;
-  box-shadow: 2px 2px 15px #00000088;
+  box-shadow: 0 0 15px #00000088;
   animation: ${rotate} 2s linear infinite;
 
   &::after,

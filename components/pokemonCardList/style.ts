@@ -3,17 +3,17 @@ import styled from "styled-components";
 export const Button = styled.button`
   background-color: #f7c600;
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: #20336e;
-  padding: 1rem 2.4rem;
-  border: 0;
+  padding: 0.8rem 2.2rem;
+  border: 2px solid transparent;
   border-radius: 0 2.4rem;
-  box-shadow: 2px 2px 15px #00000055;
+  box-shadow: 2px 2px 15px #00000077;
   opacity: 1;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 2px 2px 15px #00000077;
+    transform: scale(1.02);
   }
 
   &:active {

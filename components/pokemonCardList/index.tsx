@@ -33,7 +33,7 @@ export default function PokemonCardList({ pokemonList }) {
         ))}
       </Div>
       <Div display="flex" justifyContent="center" pt="4rem">
-        <Button onClick={fetchPokemons}>Fetch pokemons</Button>
+        <Button onClick={fetchPokemons}>LOAD MORE</Button>
       </Div>
     </div>
   );

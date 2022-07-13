@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { pokeBgTypes, pokeColorTypes } from "../../styles/poketypes";
+import { pokemonColorTypes } from "../../styles/pokemonColors";
 
 export const Card = styled.div`
   background-color: #fff;
@@ -31,7 +31,7 @@ export const Card = styled.div`
     position: absolute;
     inset: 0 2.4rem 0 0;
     background-repeat: no-repeat;
-    ${pokeBgTypes}
+    ${pokemonColorTypes}
   }
 
   .pokeball {
@@ -95,7 +95,7 @@ export const Card = styled.div`
     width: 80px;
     padding: 0.2rem 0;
     border-radius: 4px;
-    ${pokeColorTypes}
+    ${pokemonColorTypes}
   }
 
   &:hover {

@@ -60,6 +60,12 @@ interface ElementProps {
   borderRadius?: string;
   border?: string;
   overflow?: string;
+  position?: string;
+  inset?: string;
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
   breakpoints?: string;
   breakpointType?: "min-width" | "max-width";
   stringSeparator?: string;
@@ -120,6 +126,12 @@ const styleKeys = {
   borderRadius: "border-radius",
   border: "border",
   overflow: "overflow",
+  position: "position",
+  inset: "inset",
+  top: "top",
+  right: "right",
+  bottom: "bottom",
+  left: "left",
 } as const;
 
 function splitBreakpoints(separator: string, string: string) {

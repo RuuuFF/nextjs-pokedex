@@ -2,26 +2,31 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  baseLength,
+  initialLength,
   getPokemonList,
-  PokemonListProps,
+  PokemonCardProps,
 } from "../../utils/pokedex";
 import { formatText, formatId } from "../../utils";
 import { Div } from "../../styles/customDiv";
 import { Card, Button, Pokeball } from "./style";
 
 export default function PokemonCardList({ pokemonList }) {
-  const [pokeArray, setPokeArray] = useState(pokemonList);
-  const [startFrom, setStartFrom] = useState(baseLength + 1);
+  const [pokemons, setPokemons] = useState(pokemonList);
+  const [startFrom, setStartFrom] = useState(initialLength + 1);
+  const [hideButton, setHideButton] = useState(false);
   const [loading, setLoading] = useState(false);
   const length = 23;
 
   async function fetchPokemons() {
     setLoading(true);
-    const morePokemons = await getPokemonList(startFrom, startFrom + length);
-    setPokeArray([...pokeArray, ...morePokemons]);
-    setStartFrom(startFrom + length + 1);
+    const { pokemonList: morePokemons, error } = await getPokemonList(
+      startFrom,
+      startFrom + length
+    );
+    setPokemons([...pokemons, ...morePokemons]);
     setLoading(false);
+    if (error) return setHideButton(true);
+    setStartFrom(startFrom + length + 1);
   }
 
   return (
@@ -33,7 +38,7 @@ export default function PokemonCardList({ pokemonList }) {
         gap="1.6rem"
         width="100%"
       >
-        {pokeArray.map(({ id, name, types }: PokemonListProps) => {
+        {pokemons.map(({ id, name, types }: PokemonCardProps) => {
           const mainType = types[0];
           const formattedName = formatText(name);
           const formattedId = formatId(id);
@@ -74,7 +79,7 @@ export default function PokemonCardList({ pokemonList }) {
       </Div>
       <Div display="flex" justifyContent="center" mt="4rem">
         {!loading ? (
-          <Button onClick={fetchPokemons}>LOAD MORE</Button>
+          !hideButton && <Button onClick={fetchPokemons}>LOAD MORE</Button>
         ) : (
           <Pokeball />
         )}

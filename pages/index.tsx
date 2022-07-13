@@ -1,14 +1,14 @@
 import Head from "next/head";
-import { getPokemonList, PokemonListProps } from "../utils/pokedex";
+import { getPokemonList, PokemonCardProps } from "../utils/pokedex";
 import Layout, { siteTitle } from "../components/layout";
 import PokemonCardList from "../components/pokemonCardList";
 
 interface HomeProps {
-  pokemonList: PokemonListProps[];
+  pokemonList: PokemonCardProps[];
 }
 
 export async function getStaticProps() {
-  const pokemonList = await getPokemonList();
+  const { pokemonList } = await getPokemonList();
 
   return {
     props: {

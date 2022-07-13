@@ -1,13 +1,13 @@
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
-export const baseLength = 12;
+export const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
+export const initialLength = 12;
 
-export interface PokemonListProps {
+export interface PokemonCardProps {
   id: number;
   name: string;
   types: string[];
 }
 
-export interface PokemonProps extends PokemonListProps {
+export interface PokemonProps extends PokemonCardProps {
   weight: number;
   abilities: string[];
   stats: {
@@ -27,21 +27,14 @@ interface GetPokemonProps {
   };
 }
 
-function getIdFromURL(url: string) {
-  const stringArray: string[] = url.slice(0, -1).split("/");
-  const id = stringArray.at(-1);
-  return id;
-}
+export async function getPokemonList(startFrom?: number, length?: number) {
+  const pokemonList: PokemonCardProps[] = [];
+  const start = startFrom || 1;
+  const max = length || initialLength;
 
-export async function getPokemonList(
-  startFrom?: number,
-  length?: number
-): Promise<PokemonListProps[]> {
-  const pokemonList: PokemonListProps[] = [];
-  const max = length || baseLength;
-
-  for (let id = startFrom || 1; id <= max; id++) {
+  for (let id = start; id <= max; id++) {
     const res = await fetch(BASE_URL + id);
+    if (!res.ok) return { pokemonList, error: true };
     const data = await res.json();
 
     pokemonList.push({
@@ -51,7 +44,13 @@ export async function getPokemonList(
     });
   }
 
-  return pokemonList;
+  return { pokemonList, error: false };
+}
+
+function getIdFromURL(url: string) {
+  const stringArray: string[] = url.slice(0, -1).split("/");
+  const id = stringArray.at(-1);
+  return id;
 }
 
 export async function getPokemon(query: string): Promise<GetPokemonProps> {

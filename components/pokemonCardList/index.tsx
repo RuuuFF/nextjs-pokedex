@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   initialLength,
   getPokemonList,
@@ -55,7 +54,7 @@ export default function PokemonCardList({ pokemonList }) {
                       </div>
                     </div>
                     <div className="image-wrapper">
-                      <Image src={image} alt={name} width={120} height={120} />
+                      <img src={image} alt={name} loading="lazy" />
                     </div>
                   </div>
 

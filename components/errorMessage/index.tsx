@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Head from "next/head";
 import { Div } from "../../styles/customDiv";
 
@@ -27,11 +26,11 @@ export default function ErrorMessage({ error }) {
         </Div>
 
         <Div mt="3.2rem" mx="auto">
-          <Image
-            alt="pikachu sad"
-            width={300}
-            height={224}
+          <img
+            style={{ width: "30rem", height: "22.4rem" }}
             src="/pikachu-sad.gif"
+            alt="pikachu sad"
+            loading="lazy"
           />
         </Div>
       </Div>

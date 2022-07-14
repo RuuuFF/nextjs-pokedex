@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Head from "next/head";
 import { PokemonProps } from "../../utils/pokedex";
 import { formatId, formatText } from "../../utils";
@@ -12,6 +11,7 @@ export default function PageCard(props: PokemonProps) {
   const formattedId = formatId(id);
   const pageTitle = `${formattedName} | Next.js Pokédex`;
   const mainType = types[0];
+  const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedId}.png`;
 
   return (
     <Container>
@@ -25,13 +25,7 @@ export default function PageCard(props: PokemonProps) {
           <span className="id">N&ordm;{formattedId}</span>
         </h1>
       </Header>
-      <Image
-        className="nextjs-image"
-        alt={name}
-        src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedId}.png`}
-        width={300}
-        height={300}
-      />
+      <img className="pagecard-image" src={image} alt={name} loading="lazy" />
 
       <Evolutions evolutions={evolution_chain} type={mainType} />
     </Container>

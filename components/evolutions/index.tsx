@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { formatId, formatText } from "../../utils";
 import { Div } from "../../styles/customDiv";
@@ -20,6 +19,7 @@ export default function Evolutions({ evolutions, type }) {
           const { id, name } = evolution;
           const formattedId = formatId(id);
           const formattedName = formatText(name);
+          const image = `https://cdn.traction.one/pokedex/pokemon/${evolution.id}.png`;
 
           return (
             <Link href={`/pokemon/${evolution.name}`} key={evolution.id}>
@@ -27,12 +27,7 @@ export default function Evolutions({ evolutions, type }) {
                 <div className="image-container">
                   <div className="pokeball"></div>
                   <div className="image-wrapper">
-                    <Image
-                      alt={name}
-                      width={150}
-                      height={150}
-                      src={`https://cdn.traction.one/pokedex/pokemon/${evolution.id}.png`}
-                    />
+                    <img src={image} alt={name} loading="lazy" />
                   </div>
                 </div>
                 <p className="evolution-name">

@@ -35,12 +35,12 @@ export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
         </div>
 
         <div className="stat-container">
-          {stats?.map((stat) => {
+          {stats?.map((stat, index) => {
             // const statPercentage = (stat.base_stat * 100) / 220;
             const formattedStatName = formatText(stat.name);
 
             return (
-              <Div className="stat" width="48%">
+              <Div className="stat" width="48%" key={index}>
                 <div className="stat-name">
                   {formattedStatName} {stat.base_stat}
                 </div>

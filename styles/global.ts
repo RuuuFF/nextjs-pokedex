@@ -27,6 +27,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   img {
+    position: relative;
+    width: 13rem;
+    height: 13rem;
+    z-index: 1;
     user-select: none;
     -webkit-user-drag: none;
   }

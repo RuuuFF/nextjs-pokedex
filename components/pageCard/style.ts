@@ -4,6 +4,11 @@ export const Container = styled.div`
   background-color: #fff;
   width: 100%;
   border-radius: 0.8rem;
+
+  .pagecard-image {
+    width: 22rem;
+    height: 22rem;
+  }
 `;
 
 export const Header = styled.header`

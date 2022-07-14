@@ -19,12 +19,13 @@ export const Card = styled.div`
   .image-container {
     display: flex;
     align-items: center;
-    padding-left: 1.6rem;
     position: relative;
     min-width: 13.6rem;
   }
 
   .image-wrapper {
+    position: absolute;
+    left: 1rem;
     transition: transform 0.2s ease;
   }
 

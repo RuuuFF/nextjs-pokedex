@@ -5,7 +5,7 @@ import PokemonPage from "../../components/pokemonPage";
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  const { pokemon, error = null } = await getPokemon(id);
+  const { pokemon = null, error = null } = await getPokemon(id);
 
   return {
     props: { pokemon, error },

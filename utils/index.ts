@@ -8,3 +8,7 @@ export function formatText(text: string) {
 export function formatId(id: string | number) {
   return id.toString().padStart(3, "0");
 }
+
+export function getPokemonImageSource(id: string) {
+  return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png`;
+}

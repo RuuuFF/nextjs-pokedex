@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { PokemonProps } from "../../utils/pokedex";
-import { formatId, formatText } from "../../utils";
+import { formatId, formatText, getPokemonImageSource } from "../../utils";
 
 // import { Div } from "../../styles/customDiv";
 import Picture from "../picture";
@@ -13,7 +13,7 @@ export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
   const formattedId = formatId(id);
   const pageTitle = `${formattedName} | Next.js Pokédex`;
   const mainType = types[0];
-  const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedId}.png`;
+  const image = getPokemonImageSource(formattedId);
 
   return (
     <Container>

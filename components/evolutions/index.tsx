@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatId, formatText } from "../../utils";
+import { formatId, formatText, getPokemonImageSource } from "../../utils";
 import Picture from "../picture";
 import { Div } from "../../styles/customDiv";
 import { Container } from "./style";
@@ -20,7 +20,7 @@ export default function Evolutions({ evolutions, type }) {
           const { id, name } = evolution;
           const formattedId = formatId(id);
           const formattedName = formatText(name);
-          const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedId}.png`;
+          const image = getPokemonImageSource(formattedId);
 
           return (
             <Link href={`/pokemon/${evolution.name}`} key={evolution.id}>

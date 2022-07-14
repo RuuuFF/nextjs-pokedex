@@ -5,7 +5,7 @@ import {
   getPokemonList,
   PokemonCardProps,
 } from "../../utils/pokedex";
-import { formatText, formatId } from "../../utils";
+import { formatText, formatId, getPokemonImageSource } from "../../utils";
 import { Div } from "../../styles/customDiv";
 import Picture from "../picture";
 import { Card, Button, Pokeball } from "./style";
@@ -42,7 +42,7 @@ export default function PokemonCardList({ pokemonList }) {
           const mainType = types[0];
           const formattedName = formatText(name);
           const formattedId = formatId(id);
-          const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedId}.png`;
+          const image = getPokemonImageSource(formattedId);
 
           return (
             <Card key={id}>

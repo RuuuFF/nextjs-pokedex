@@ -2,13 +2,14 @@ import Head from "next/head";
 import { PokemonProps } from "../../utils/pokedex";
 import { formatId, formatText, getPokemonImageSource } from "../../utils";
 
-// import { Div } from "../../styles/customDiv";
+import { Div } from "../../styles/customDiv";
 import Picture from "../picture";
 import Evolutions from "../evolutions";
-import { Container, Header } from "./style";
+import { Container } from "./style";
 
 export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
-  const { id, name, types, evolution_chain } = pokemon;
+  const { id, name, types, stats, weight, abilities, evolution_chain } =
+    pokemon;
   const formattedName = formatText(name);
   const formattedId = formatId(id);
   const pageTitle = `${formattedName} | Next.js Pokédex`;
@@ -21,13 +22,33 @@ export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
         <title>{pageTitle}</title>
       </Head>
 
-      <Header>
-        <h1 className="name">
+      <Div mb="1.6rem">
+        <h1 className="poke-name">
           {formattedName + " "}
-          <span className="id">N&ordm;{formattedId}</span>
+          <span className="poke-id">N&ordm;{formattedId}</span>
         </h1>
-      </Header>
-      <Picture className="pagecard-image" src={image} alt={name} />
+      </Div>
+
+      <div className="image-stat-container">
+        <div className="poke-image-container">
+          <Picture className="poke-image" src={image} alt={name} />
+        </div>
+
+        <div className="stat-container">
+          {stats?.map((stat) => {
+            // const statPercentage = (stat.base_stat * 100) / 220;
+            const formattedStatName = formatText(stat.name);
+
+            return (
+              <Div className="stat" width="48%">
+                <div className="stat-name">
+                  {formattedStatName} {stat.base_stat}
+                </div>
+              </Div>
+            );
+          })}
+        </div>
+      </div>
 
       <Evolutions evolutions={evolution_chain} type={mainType} />
     </Container>

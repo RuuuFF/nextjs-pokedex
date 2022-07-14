@@ -25,4 +25,9 @@ export const Header = styled.header`
     justify-content: center;
     grid-column: 2;
   }
+
+  .logo {
+    height: 7.342rem;
+    width: 20rem;
+  }
 `;

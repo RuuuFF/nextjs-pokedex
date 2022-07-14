@@ -3,6 +3,8 @@ import Image from "next/dist/client/image";
 import Link from "next/link";
 import { Div } from "../../styles/customDiv";
 import { Header } from "./style";
+import { loadGetInitialProps } from "next/dist/shared/lib/utils";
+import Picture from "../picture";
 
 export const siteTitle = "Next.js Pokédex | ruuuff";
 
@@ -42,9 +44,7 @@ export default function Layout({
 
       <Div maxWidth="96rem" mx="auto">
         <Header>
-          {home ? (
-            ""
-          ) : (
+          {!home && (
             <Div className="backToHome">
               <Link href="/">
                 <a>
@@ -58,20 +58,18 @@ export default function Layout({
           )}
           <div className="logo-container">
             {home ? (
-              <Image
+              <Picture
+                className="logo"
                 src="/pokemon-logo.png"
-                alt="Pokémon Logo"
-                height={73.42}
-                width={200}
+                alt="pokémon logo"
               />
             ) : (
               <Link href="/">
                 <a>
-                  <Image
+                  <Picture
+                    className="logo"
                     src="/pokemon-logo.png"
-                    alt="Pokémon Logo"
-                    height={73.42}
-                    width={200}
+                    alt="pokémon logo"
                   />
                 </a>
               </Link>

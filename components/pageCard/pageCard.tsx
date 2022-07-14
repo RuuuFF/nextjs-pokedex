@@ -2,6 +2,7 @@ import Head from "next/head";
 import { PokemonProps } from "../../utils/pokedex";
 import { formatId, formatText } from "../../utils";
 // import { Div } from "../../styles/customDiv";
+import Picture from "../picture";
 import Evolutions from "../evolutions";
 import { Container, Header } from "./style";
 
@@ -25,7 +26,7 @@ export default function PageCard(props: PokemonProps) {
           <span className="id">N&ordm;{formattedId}</span>
         </h1>
       </Header>
-      <img className="pagecard-image" src={image} alt={name} loading="lazy" />
+      <Picture className="pagecard-image" src={image} alt={name} />
 
       <Evolutions evolutions={evolution_chain} type={mainType} />
     </Container>

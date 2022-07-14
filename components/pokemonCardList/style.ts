@@ -109,10 +109,6 @@ export const Card = styled.div`
       opacity: 0.2;
     }
   }
-
-  &:active img {
-    transform: scale(0.98);
-  }
 `;
 
 export const Button = styled.button`

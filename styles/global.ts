@@ -34,4 +34,9 @@ export const GlobalStyle = createGlobalStyle`
     user-select: none;
     -webkit-user-drag: none;
   }
+
+  .errorImage {
+    width: 29.6rem;
+    height: 22.4rem;
+  }
 `;

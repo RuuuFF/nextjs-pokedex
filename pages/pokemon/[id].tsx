@@ -1,21 +1,25 @@
 import { getPokemon } from "../../utils/pokedex";
 import Layout from "../../components/layout";
 import ErrorMessage from "../../components/errorMessage";
-import PageCard from "../../components/pageCard/pageCard";
+import PokemonPage from "../../components/pokemonPage";
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  const { pokemon = null, error = null } = await getPokemon(id);
+  const { pokemon, error = null } = await getPokemon(id);
 
   return {
     props: { pokemon, error },
   };
 }
 
-export default function PokemonPage({ pokemon, error }) {
+export default function Pokemon({ pokemon, error }) {
   return (
     <Layout>
-      {error ? <ErrorMessage error={error} /> : <PageCard {...pokemon} />}
+      {!error ? (
+        <PokemonPage pokemon={pokemon} />
+      ) : (
+        <ErrorMessage error={error} />
+      )}
     </Layout>
   );
 }

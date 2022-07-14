@@ -1,13 +1,14 @@
 import Head from "next/head";
 import { PokemonProps } from "../../utils/pokedex";
 import { formatId, formatText } from "../../utils";
+
 // import { Div } from "../../styles/customDiv";
 import Picture from "../picture";
 import Evolutions from "../evolutions";
 import { Container, Header } from "./style";
 
-export default function PageCard(props: PokemonProps) {
-  const { id, name, types, evolution_chain } = props;
+export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
+  const { id, name, types, evolution_chain } = pokemon;
   const formattedName = formatText(name);
   const formattedId = formatId(id);
   const pageTitle = `${formattedName} | Next.js Pokédex`;

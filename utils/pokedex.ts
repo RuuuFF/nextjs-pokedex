@@ -9,6 +9,7 @@ export interface PokemonCardProps {
 
 export interface PokemonProps extends PokemonCardProps {
   weight: number;
+  height: number;
   abilities: string[];
   stats: {
     base_stat: number;
@@ -100,6 +101,7 @@ export async function getPokemon(query: string): Promise<GetPokemonProps> {
       name: obj.stat.name,
     })),
     weight: pokeData.weight,
+    height: pokeData.height,
     abilities: pokeData.abilities.map((obj: any) => obj.ability.name),
     evolution_chain: evoChain,
   };

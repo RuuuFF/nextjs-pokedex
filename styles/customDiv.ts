@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const defaultBreakpoints = "";
+const defaultBreakpoints = "auto, 960px";
 const defaultBreakpointType = "max-width";
 const defaultSeparator = ",";
 const ignoreValues = ["---", "null"];
@@ -23,6 +23,10 @@ interface ElementProps {
   flex?: string;
   justifySelf?: string;
   alignSelf?: string;
+  gridtc?: string;
+  gridtw?: string;
+  gridc?: string;
+  gridr?: string;
   mt?: string;
   mr?: string;
   mb?: string;
@@ -66,8 +70,8 @@ interface ElementProps {
   right?: string;
   bottom?: string;
   left?: string;
-  breakpoints?: string;
-  breakpointType?: "min-width" | "max-width";
+  bps?: string;
+  bpType?: "min-width" | "max-width";
   stringSeparator?: string;
 }
 
@@ -79,8 +83,6 @@ const styleKeys = {
   alignContent: "align-content",
   flexFlow: "flex-flow",
   flexWrap: "flex-wrap",
-  justifySelf: "justify-self",
-  alignSelf: "align-self",
   gap: "gap",
   rowGap: "row-gap",
   columnGap: "column-gap",
@@ -89,6 +91,12 @@ const styleKeys = {
   flexShrink: "flex-shrink",
   flexBasis: "flex-basis",
   flex: "flex",
+  justifySelf: "justify-self",
+  alignSelf: "align-self",
+  gridtc: "grid-template-columns",
+  gridtr: "grid-template-rows",
+  gridc: "grid-column",
+  gridr: "grid-row",
   mt: "margin-top",
   mr: "margin-right",
   mb: "margin-bottom",
@@ -165,12 +173,12 @@ function createDefaultStyle(props: ElementProps) {
 }
 
 function createMediaQueries(props: ElementProps) {
-  if (!props?.breakpoints && !defaultBreakpoints) return "";
+  if (!props?.bps && !defaultBreakpoints) return "";
   const separator = props?.stringSeparator || defaultSeparator;
   const breakpoints =
-    splitBreakpoints(separator, props?.breakpoints) ||
+    splitBreakpoints(separator, props?.bps) ||
     splitBreakpoints(separator, defaultBreakpoints);
-  const breakpointType = props?.breakpointType || defaultBreakpointType;
+  const breakpointType = props?.bpType || defaultBreakpointType;
   let mediaquery = "";
 
   breakpoints.forEach((breakpoint, index) => {
@@ -193,7 +201,7 @@ function createMediaQueries(props: ElementProps) {
 
 export const Div = styled("div").withConfig({
   shouldForwardProp: (prop, defaultValidatorFn) =>
-    !Object.keys(styleKeys).includes(prop) && defaultValidatorFn(prop),
+    !styleKeys.hasOwnProperty(prop) && defaultValidatorFn(prop),
 })<ElementProps>`
   ${(props) => {
     const defaultStyle = createDefaultStyle(props);

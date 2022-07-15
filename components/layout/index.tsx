@@ -49,7 +49,7 @@ export default function Layout({
               <Link href="/">
                 <a>
                   Back{" "}
-                  <Div display="inline, none" breakpoints="auto, 480px">
+                  <Div display="inline, none" bps="auto, 480px">
                     to home
                   </Div>
                 </a>

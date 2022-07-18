@@ -9,7 +9,7 @@ import {
 
 import Picture from "../picture";
 import Evolutions from "../evolutions";
-import { Div } from "../../styles/customDiv";
+import { Div } from "../../utils/customDiv";
 import { Container } from "./style";
 
 export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {

@@ -6,7 +6,7 @@ import {
   PokemonCardProps,
 } from "../../utils/pokedex";
 import { formatText, formatId, getPokemonImageSource } from "../../utils";
-import { Div } from "../../styles/customDiv";
+import { Div } from "../../utils/customDiv";
 import Picture from "../picture";
 import { Card, Button, Pokeball } from "./style";
 

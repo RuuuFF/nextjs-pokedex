@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { formatId, formatText, getPokemonImageSource } from "../../utils";
+
 import Picture from "../picture";
-import { Div } from "../../styles/customDiv";
+import { Div } from "../../utils/customDiv";
 import { Container } from "./style";
 
 export default function Evolutions({ evolutions, type }) {

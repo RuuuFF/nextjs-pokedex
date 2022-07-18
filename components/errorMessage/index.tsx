@@ -1,6 +1,7 @@
 import Head from "next/head";
+
 import Picture from "../picture";
-import { Div } from "../../styles/customDiv";
+import { Div } from "../../utils/customDiv";
 
 export default function ErrorMessage({ error }) {
   const message = `Can\'t find \"${error.query}\"`;

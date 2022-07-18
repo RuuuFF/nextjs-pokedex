@@ -36,7 +36,7 @@ export default function CardList({ pokemonList }) {
         display="flex"
         flexWrap="wrap"
         justifyContent="center"
-        gap="1.6rem"
+        gap="var(--space-3)"
         width="100%"
       >
         {pokemons.map(({ id, name, types }: PokemonCardProps) => {
@@ -60,11 +60,15 @@ export default function CardList({ pokemonList }) {
                     </div>
                   </div>
 
-                  <Div display="flex" flexDirection="column" p="1.6rem">
+                  <Div display="flex" flexDirection="column" p="var(--space-3)">
                     <h2 className="name">{formattedName}</h2>
                     <p className="id">N&ordm;{formattedId}</p>
 
-                    <Div display="flex" flexDirection="column" gap="0.8rem">
+                    <Div
+                      display="flex"
+                      flexDirection="column"
+                      gap="var(--space-2)"
+                    >
                       {types.map((type) => (
                         <div key={type} className={`type ${type}`}>
                           {formatText(type)}
@@ -78,7 +82,7 @@ export default function CardList({ pokemonList }) {
           );
         })}
       </Div>
-      <Div display="flex" justifyContent="center" mt="4rem">
+      <Div display="flex" justifyContent="center" mt="var(--space-6)">
         {!loading ? (
           !hideButton && <Button onClick={fetchPokemons}>LOAD MORE</Button>
         ) : (

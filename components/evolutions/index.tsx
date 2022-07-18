@@ -13,9 +13,8 @@ export default function Evolutions({ evolutions, type }) {
         justifyContent="center"
         alignItems="center"
         flexWrap="wrap"
-        gap="3.2rem"
-        py="3.2rem"
-        mx="1.6rem"
+        gap="var(--space-5)"
+        my="var(--space-5)"
       >
         {evolutions.map((evolution) => {
           const { id, name } = evolution;

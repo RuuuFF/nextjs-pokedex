@@ -4,17 +4,16 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: #fff;
   width: 100%;
-  padding: 0.8rem 2.4rem 2.4rem;
+  padding: var(--space-2) var(--space-4) var(--space-4);
   border-radius: 0.8rem;
 
   .poke-name {
-    margin: 0.8rem 0 2.4rem;
     text-align: center;
-    font-size: 3.2rem;
+    font-size: var(--title);
     font-weight: 500;
 
     .poke-id {
-      color: #999;
+      color: var(--gray);
     }
   }
 
@@ -24,7 +23,7 @@ export const Container = styled.div`
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 2.4rem;
+    margin-bottom: var(--space-4);
   }
 
   .poke-image {
@@ -35,8 +34,8 @@ export const Container = styled.div`
   .stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.6rem;
-    padding: 1.6rem;
+    gap: var(--space-3);
+    padding: var(--space-3);
     width: 100%;
     max-width: 40rem;
     background-color: #aadfb2;
@@ -44,7 +43,7 @@ export const Container = styled.div`
 
     .stat-name {
       text-transform: capitalize;
-      font-size: 1.4rem;
+      font-size: var(--small);
       font-weight: 600;
 
       &.uppercase {
@@ -54,16 +53,16 @@ export const Container = styled.div`
 
     .stat-value {
       letter-spacing: 1px;
-      font-size: 2.2rem;
+      font-size: var(--x-large);
       font-weight: 400;
-      margin-top: 0.4rem;
+      margin-top: var(--space-1);
     }
 
     .stat-bar {
-      height: 1.8rem;
+      height: var(--large);
       background-color: #fff;
-      margin-top: 0.8rem;
-      border-radius: 0.8rem;
+      margin-top: var(--space-2);
+      border-radius: var(--space-2);
       overflow: hidden;
     }
 

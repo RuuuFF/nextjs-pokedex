@@ -29,18 +29,23 @@ export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
         <title>{pageTitle}</title>
       </Head>
 
-      <Div mb="1.6rem">
+      <Div m="var(--space-2) 0 var(--space-5)">
         <h1 className="poke-name">
           {formattedName + " "}
           <span className="poke-id">N&ordm;{formattedId}</span>
         </h1>
       </Div>
 
-      <Div display="grid" gridtc="1fr 1fr, 1fr" gap="1.6rem">
+      <Div display="grid" gridtc="1fr 1fr, 1fr" gap="var(--space-3)">
         <div className="column one">
-          <Div width="100%" maxWidth="36rem" bg="#aadfb2" borderRadius="0.8rem">
+          <Div
+            width="100%"
+            maxWidth="36rem"
+            bg="var(--light-green)"
+            borderRadius="0.8rem"
+          >
             <Div width="100%" position="relative" pb="100%">
-              <Div position="absolute" inset="0" p="2.4rem">
+              <Div position="absolute" inset="0" p="var(--space-4)">
                 <Picture className="poke-image" src={image} alt={name} />
               </Div>
             </Div>
@@ -49,7 +54,7 @@ export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
         </div>
 
         <div className="column two">
-          <Div className="stats" mb="1.6rem">
+          <Div className="stats" mb="var(--space-3)">
             <div>
               <div className="stat-name">Height</div>
               <div className="stat-value">{formattedHeight}m</div>

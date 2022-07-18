@@ -14,16 +14,7 @@ export default function Layout({
   home?: boolean;
 }) {
   return (
-    <Div
-      bg="linear-gradient(
-        45deg,
-        hsl(67deg 61% 78%) 0%,
-        hsl(162deg 52% 67%) 50%,
-        hsl(195deg 58% 60%) 100%
-      ) fixed"
-      minHeight="100vh"
-      stringSeparator="_"
-    >
+    <Div bg="var(--bg-color) fixed" minHeight="100vh">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -74,7 +65,7 @@ export default function Layout({
             )}
           </div>
         </Header>
-        <Div p="1.2rem 1.2rem 5.6rem 1.2rem">
+        <Div p="var(--space-2) var(--space-2) var(--space-7)">
           <main>{children}</main>
         </Div>
       </Div>

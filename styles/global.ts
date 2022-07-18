@@ -1,7 +1,9 @@
 import { createGlobalStyle } from "styled-components";
+import variables from "./variables";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
+    ${variables}
     font-size: 62.5%;
   }
 

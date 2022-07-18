@@ -6,10 +6,10 @@ export default function ErrorCard({ error }) {
   const message = `Can\'t find \"${error.query}\"`;
   return (
     <Div
-      bg="#fff"
-      mt="1.6rem"
+      bg="var(--white)"
       mx="auto"
-      p="3.2rem"
+      mt="var(--space-3)"
+      p="var(--space-4)"
       maxWidth="360px"
       borderRadius="0.8rem"
     >
@@ -17,16 +17,15 @@ export default function ErrorCard({ error }) {
         <title>Error | Next.js Pokédex</title>
       </Head>
 
-      <Div maxWidth="300px">
+      <Div textAlign="center">
         <Div
-          fontSize="2.4rem"
-          textAlign="center"
+          fontSize="var(--xx-large)"
           textOverflow="ellipsis"
           overflow="hidden"
         >
           {message}
         </Div>
-        <Div mt="3.2rem" mx="auto">
+        <Div mt="var(--space-5)" mx="auto">
           <Picture
             className="errorImage"
             src="/pikachu-sad.gif"

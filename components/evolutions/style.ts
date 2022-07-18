@@ -3,7 +3,7 @@ import { pokemonColorTypes } from "../../styles/pokemonColors";
 
 export const Container = styled.div`
   .evo-card {
-    padding: 1.6rem;
+    padding: var(--space-3);
     border-radius: 16px;
     ${pokemonColorTypes}
 
@@ -16,7 +16,7 @@ export const Container = styled.div`
 
   .evo-image-container {
     position: relative;
-    padding: 2.4rem;
+    padding: var(--space-4);
   }
 
   .evo-image-wrapper {

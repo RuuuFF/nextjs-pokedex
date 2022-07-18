@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { pokemonColorTypes } from "../../styles/pokemonColors";
 
 export const Card = styled.div`
-  background-color: #fff;
+  background-color: var(--white);
   width: 100%;
   max-width: 30rem;
   min-height: 20rem;
@@ -37,7 +37,7 @@ export const Card = styled.div`
   }
 
   .pokeball {
-    color: #000;
+    color: var(--black);
     position: absolute;
     top: 50%;
     left: -5%;
@@ -80,20 +80,20 @@ export const Card = styled.div`
   }
 
   .name {
-    font-size: 1.8rem;
+    font-size: var(--large);
   }
 
   .id {
-    font-size: 1.4rem;
+    font-size: var(--small);
     font-weight: 600;
-    color: #999;
-    margin-bottom: 1.6rem;
+    color: var(--gray);
+    margin-bottom: var(--space-4);
   }
 
   .type {
-    color: #f1f1f1;
+    color: var(--white);
     text-align: center;
-    font-size: 1.4rem;
+    font-size: var(--small);
     width: 80px;
     padding: 0.2rem 0;
     border-radius: 4px;
@@ -112,11 +112,11 @@ export const Card = styled.div`
 `;
 
 export const Button = styled.button`
-  background-color: #f7c600;
+  background-color: var(--yellow);
   font-weight: 600;
-  font-size: 1.6rem;
-  color: #20336e;
-  padding: 1rem 2.4rem;
+  font-size: var(--medium);
+  color: var(--dark-blue);
+  padding: calc(var(--space-2) + 0.2rem) var(--space-4);
   border: 0;
   border-radius: 0 2.4rem;
   box-shadow: 2px 2px 15px #00000077;

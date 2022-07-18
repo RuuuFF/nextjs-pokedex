@@ -199,7 +199,7 @@ function createMediaQueries(props: ElementProps) {
   return mediaquery;
 }
 
-export const Div = styled("div").withConfig({
+const Div = styled("div").withConfig({
   shouldForwardProp: (prop, defaultValidatorFn) =>
     !styleKeys.hasOwnProperty(prop) && defaultValidatorFn(prop),
 })<ElementProps>`
@@ -210,3 +210,5 @@ export const Div = styled("div").withConfig({
     return defaultStyle + mediaQueryStyle;
   }}
 `;
+
+export default Div;

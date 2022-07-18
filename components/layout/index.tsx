@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-
-import { Div } from "../../utils/customDiv";
-import Picture from "../picture";
+import Picture from "../Picture";
+import Div from "../../utils/customDiv";
 import { Header } from "./style";
 
 export const siteTitle = "Next.js Pokédex | ruuuff";

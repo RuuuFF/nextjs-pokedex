@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { getPokemonList, PokemonCardProps } from "../utils/pokedex";
-import Layout, { siteTitle } from "../components/layout";
-import PokemonCardList from "../components/pokemonCardList";
+import Layout, { siteTitle } from "../components/Layout";
+import CardList from "../components/CardList";
 
 interface HomeProps {
   pokemonList: PokemonCardProps[];
@@ -24,7 +24,7 @@ export default function Home({ pokemonList }: HomeProps) {
         <title>{siteTitle}</title>
       </Head>
       <Layout home>
-        <PokemonCardList pokemonList={pokemonList} />
+        <CardList pokemonList={pokemonList} />
       </Layout>
     </div>
   );

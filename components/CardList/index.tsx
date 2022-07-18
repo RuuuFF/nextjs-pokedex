@@ -5,12 +5,13 @@ import {
   getPokemonList,
   PokemonCardProps,
 } from "../../utils/pokedex";
+import Div from "../../utils/customDiv";
 import { formatText, formatId, getPokemonImageSource } from "../../utils";
-import { Div } from "../../utils/customDiv";
-import Picture from "../picture";
+
+import Picture from "../Picture";
 import { Card, Button, Pokeball } from "./style";
 
-export default function PokemonCardList({ pokemonList }) {
+export default function CardList({ pokemonList }) {
   const [pokemons, setPokemons] = useState(pokemonList);
   const [startFrom, setStartFrom] = useState(initialLength + 1);
   const [hideButton, setHideButton] = useState(false);

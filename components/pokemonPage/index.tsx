@@ -7,9 +7,9 @@ import {
   getPokemonImageSource,
 } from "../../utils";
 
-import Picture from "../picture";
-import Evolutions from "../evolutions";
-import { Div } from "../../utils/customDiv";
+import Picture from "../Picture";
+import Div from "../../utils/customDiv";
+import Evolutions from "../Evolutions";
 import { Container } from "./style";
 
 export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {

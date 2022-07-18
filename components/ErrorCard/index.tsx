@@ -1,9 +1,8 @@
 import Head from "next/head";
+import Picture from "../Picture";
+import Div from "../../utils/customDiv";
 
-import Picture from "../picture";
-import { Div } from "../../utils/customDiv";
-
-export default function ErrorMessage({ error }) {
+export default function ErrorCard({ error }) {
   const message = `Can\'t find \"${error.query}\"`;
   return (
     <Div
@@ -17,6 +16,7 @@ export default function ErrorMessage({ error }) {
       <Head>
         <title>Error | Next.js Pokédex</title>
       </Head>
+
       <Div maxWidth="300px">
         <Div
           fontSize="2.4rem"
@@ -26,7 +26,6 @@ export default function ErrorMessage({ error }) {
         >
           {message}
         </Div>
-
         <Div mt="3.2rem" mx="auto">
           <Picture
             className="errorImage"

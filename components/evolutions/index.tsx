@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { formatId, formatText, getPokemonImageSource } from "../../utils";
 
-import Picture from "../picture";
-import { Div } from "../../utils/customDiv";
+import Picture from "../Picture";
+import Div from "../../utils/customDiv";
 import { Container } from "./style";
 
 export default function Evolutions({ evolutions, type }) {
@@ -25,14 +25,13 @@ export default function Evolutions({ evolutions, type }) {
 
           return (
             <Link href={`/pokemon/${evolution.name}`} key={evolution.id}>
-              <a className={`card ${type}`}>
-                <div className="image-container">
-                  <div className="pokeball"></div>
-                  <div className="image-wrapper">
+              <a className={`evo-card ${type}`}>
+                <div className="evo-image-container">
+                  <div className="evo-image-wrapper">
                     <Picture src={image} alt={name} />
                   </div>
                 </div>
-                <p className="evolution-name">
+                <p className="evo-name">
                   {formattedName} N&ordm; {formattedId}
                 </p>
               </a>

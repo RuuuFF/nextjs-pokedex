@@ -9,7 +9,7 @@ import {
 
 import MyPicture from "../MyPicture";
 import Div from "../../utils/customDiv";
-import Evolutions from "../Evolutions";
+import PokeEvolutions from "../PokeEvolutions";
 import { Container, Type } from "./style";
 
 export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
@@ -119,7 +119,7 @@ export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
         </div>
       </Div>
 
-      <Evolutions evolutions={evolution_chain} currentPoke={name} />
+      <PokeEvolutions evolutions={evolution_chain} currentPoke={name} />
     </Container>
   );
 }

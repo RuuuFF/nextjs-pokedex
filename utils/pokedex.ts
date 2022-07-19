@@ -1,3 +1,4 @@
+import { formatTypesArray, getIdFromURL } from ".";
 export const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
 export const initialLength = 12;
 
@@ -48,16 +49,15 @@ export async function getPokemonList(startFrom?: number, length?: number) {
   return { pokemonList, error: false };
 }
 
-function getIdFromURL(url: string) {
-  const stringArray: string[] = url.slice(0, -1).split("/");
-  const id = stringArray.at(-1);
-  return id;
+async function getEvoTypes(name: string) {
+  const pokeEvoRes = await fetch(BASE_URL + name);
+  const pokeEvoData = await pokeEvoRes.json();
+  return formatTypesArray(pokeEvoData);
 }
 
 export async function getPokemon(query: string): Promise<GetPokemonProps> {
   const pokeRes = await fetch(BASE_URL + query.toLowerCase());
-  const errorCode = !pokeRes.ok;
-  if (errorCode) return { error: { query } };
+  if (!pokeRes.ok) return { error: { query } };
   const pokeData = await pokeRes.json();
 
   const SPECIES_URL = pokeData.species.url;
@@ -73,18 +73,20 @@ export async function getPokemon(query: string): Promise<GetPokemonProps> {
     let evoData = evolutionData.chain;
 
     do {
-      const id = evoData.species.url;
+      const id = getIdFromURL(evoData.species.url);
       const name = evoData.species.name;
+      const types = await getEvoTypes(name);
       let numberOfEvolutions = evoData["evolves_to"].length;
 
-      evoChain.push({ id: getIdFromURL(id), name });
+      evoChain.push({ id, name, types });
 
       if (numberOfEvolutions > 1) {
         for (let index = 1; index < numberOfEvolutions; index++) {
-          const id = evoData["evolves_to"][index].species.url;
+          const id = getIdFromURL(evoData["evolves_to"][index].species.url);
           const name = evoData["evolves_to"][index].species.name;
+          const types = await getEvoTypes(name);
 
-          evoChain.push({ id: getIdFromURL(id), name });
+          evoChain.push({ id, name, types });
         }
       }
 
@@ -95,7 +97,7 @@ export async function getPokemon(query: string): Promise<GetPokemonProps> {
   const pokemon: PokemonProps = {
     id: pokeData.id,
     name: pokeData.name,
-    types: pokeData.types.map((obj: any) => obj.type.name),
+    types: formatTypesArray(pokeData),
     stats: pokeData.stats.map((obj: any) => ({
       base_stat: obj.base_stat,
       name: obj.stat.name,

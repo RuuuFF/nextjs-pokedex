@@ -1,7 +1,8 @@
 import { pokemonColorTypes } from "./../../styles/pokemonColors";
+import { Type } from "../CardList/style";
 import styled from "styled-components";
 
-export const Container = styled.div`
+const Container = styled.div`
   background-color: #fff;
   width: 100%;
   padding: var(--space-2) var(--space-4) var(--space-4);
@@ -75,3 +76,5 @@ export const Container = styled.div`
     }
   }
 `;
+
+export { Container, Type };

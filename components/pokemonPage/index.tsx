@@ -10,7 +10,7 @@ import {
 import Picture from "../Picture";
 import Div from "../../utils/customDiv";
 import Evolutions from "../Evolutions";
-import { Container } from "./style";
+import { Container, Type } from "./style";
 
 export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
   const { id, name, types, stats, weight, height, abilities, evolution_chain } =
@@ -45,11 +45,31 @@ export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
             borderRadius="0.8rem"
           >
             <Div width="100%" position="relative" pb="100%">
-              <Div position="absolute" inset="0" p="var(--space-4)">
+              <Div position="absolute" inset="0" p="var(--space-3)">
                 <Picture className="poke-image" src={image} alt={name} />
               </Div>
             </Div>
-            {/* types */}
+          </Div>
+
+          <Div
+            display="flex"
+            justifyContent="center"
+            gap="var(--space-2)"
+            mt="var(--space-2)"
+            width="100%"
+          >
+            {types.map((type) => {
+              return (
+                <Type
+                  className={type}
+                  key={type}
+                  fs="var(--medium)"
+                  width="30%"
+                >
+                  {formatText(type)}
+                </Type>
+              );
+            })}
           </Div>
         </div>
 
@@ -99,7 +119,7 @@ export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
         </div>
       </Div>
 
-      <Evolutions evolutions={evolution_chain} type={mainType} />
+      <Evolutions evolutions={evolution_chain} currentPoke={name} />
     </Container>
   );
 }

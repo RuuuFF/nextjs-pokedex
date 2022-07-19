@@ -5,10 +5,9 @@ import {
   getPokemonList,
   PokemonCardProps,
 } from "../../utils/pokedex";
+import Picture from "../Picture";
 import Div from "../../utils/customDiv";
 import { formatText, formatId, getPokemonImageSource } from "../../utils";
-
-import Picture from "../Picture/index";
 import { Card, Button, Pokeball, Type } from "./style";
 
 export default function CardList({ pokemonList }) {

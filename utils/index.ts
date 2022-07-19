@@ -24,3 +24,13 @@ export function formatNumber(number: number) {
 export function getPokemonImageSource(id: string) {
   return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png`;
 }
+
+export function getIdFromURL(url: string) {
+  const stringArray: string[] = url.slice(0, -1).split("/");
+  const id = stringArray.at(-1);
+  return id;
+}
+
+export function formatTypesArray(data: any) {
+  return data.types.map((obj: any) => obj.type.name);
+}

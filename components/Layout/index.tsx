@@ -6,7 +6,7 @@ import { Header } from "./style";
 
 export const siteTitle = "Next.js Pokédex | ruuuff";
 
-export default function MyLayout({
+export default function Layout({
   children,
   home,
 }: {

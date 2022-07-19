@@ -1,5 +1,5 @@
 import { getPokemon } from "../../utils/pokedex";
-import MyLayout from "../../components/MyLayout";
+import Layout from "../../components/Layout";
 import ErrorCard from "../../components/ErrorCard";
 import PokePage from "../../components/PokePage";
 
@@ -14,8 +14,8 @@ export async function getServerSideProps(context) {
 
 export default function Pokemon({ pokemon, error }) {
   return (
-    <MyLayout>
+    <Layout>
       {!error ? <PokePage pokemon={pokemon} /> : <ErrorCard error={error} />}
-    </MyLayout>
+    </Layout>
   );
 }

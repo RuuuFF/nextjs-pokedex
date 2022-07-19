@@ -1,5 +1,5 @@
 import Head from "next/head";
-import MyPicture from "../MyPicture";
+import Picture from "../Picture";
 import Div from "../../utils/customDiv";
 
 export default function ErrorCard({ error }) {
@@ -26,7 +26,7 @@ export default function ErrorCard({ error }) {
           {message}
         </Div>
         <Div mt="var(--space-5)" mx="auto">
-          <MyPicture
+          <Picture
             className="errorImage"
             src="/pikachu-sad.gif"
             alt="pikachu sad"

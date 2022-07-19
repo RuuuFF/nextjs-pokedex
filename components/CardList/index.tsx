@@ -5,7 +5,7 @@ import {
   getPokemonList,
   PokemonCardProps,
 } from "../../utils/pokedex";
-import MyPicture from "../MyPicture";
+import Picture from "../Picture";
 import Div from "../../utils/customDiv";
 import { formatText, formatId, getPokemonImageSource } from "../../utils";
 import { Card, Button, Pokeball, Type } from "./style";
@@ -55,7 +55,7 @@ export default function CardList({ pokemonList }) {
                       </div>
                     </div>
                     <div className="image-wrapper">
-                      <MyPicture src={image} alt={name} />
+                      <Picture src={image} alt={name} />
                     </div>
                   </div>
 

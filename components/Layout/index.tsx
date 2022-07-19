@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import MyPicture from "../MyPicture";
+import Picture from "../Picture";
 import Div from "../../utils/customDiv";
 import { Header } from "./style";
 
@@ -47,7 +47,7 @@ export default function Layout({
           )}
           <div className="logo-container">
             {home ? (
-              <MyPicture
+              <Picture
                 className="logo"
                 src="/pokemon-logo.png"
                 alt="pokémon logo"
@@ -55,7 +55,7 @@ export default function Layout({
             ) : (
               <Link href="/">
                 <a>
-                  <MyPicture
+                  <Picture
                     className="logo"
                     src="/pokemon-logo.png"
                     alt="pokémon logo"

@@ -7,7 +7,7 @@ import {
   getPokemonImageSource,
 } from "../../utils";
 
-import MyPicture from "../MyPicture";
+import Picture from "../Picture";
 import Div from "../../utils/customDiv";
 import Evolutions from "../Evolutions";
 import { Container, Type } from "./style";
@@ -46,7 +46,7 @@ export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
           >
             <Div width="100%" position="relative" pb="100%">
               <Div position="absolute" inset="0" p="var(--space-3)">
-                <MyPicture className="poke-image" src={image} alt={name} />
+                <Picture className="poke-image" src={image} alt={name} />
               </Div>
             </Div>
           </Div>

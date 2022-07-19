@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { formatId, formatText, getPokemonImageSource } from "../../utils";
 
-import MyPicture from "../MyPicture";
+import Picture from "../Picture";
 import Div from "../../utils/customDiv";
 import { Container, Type } from "./style";
 
@@ -30,7 +30,7 @@ export default function Evolutions({ evolutions, currentPoke }) {
             <Link key={evolution.id} href={`/pokemon/${evolution.name}`}>
               <a className={`evo-card ${disableLink}`}>
                 <div className="evo-image-container">
-                  <MyPicture className="evo-image" src={image} alt={name} />
+                  <Picture className="evo-image" src={image} alt={name} />
                 </div>
                 <p className="evo-name">
                   {formattedName + " "}

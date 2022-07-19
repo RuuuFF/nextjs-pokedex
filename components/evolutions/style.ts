@@ -1,27 +1,43 @@
 import styled from "styled-components";
-import { pokemonColorTypes } from "../../styles/pokemonColors";
+import { Type } from "../CardList/style";
 
-export const Container = styled.div`
+const Container = styled.div`
+  .evo-title {
+    font-size: var(--xx-large);
+    text-align: center;
+  }
+
   .evo-card {
     padding: var(--space-3);
     border-radius: 16px;
-    ${pokemonColorTypes}
+    background-color: var(--light-green);
+
+    &.disable {
+      pointer-events: none;
+    }
 
     &:hover {
-      .evo-image-wrapper {
+      .evo-image {
         transform: translateY(-4px);
       }
     }
   }
 
-  .evo-image-container {
-    position: relative;
-    padding: var(--space-4);
+  .evo-image {
+    width: 18rem;
+    height: 18rem;
+    transition: transform 0.2s ease;
   }
 
-  .evo-image-wrapper {
-    transition: transform 0.2s ease;
-    width: 15rem;
-    height: 15rem;
+  .evo-name {
+    font-size: var(--medium);
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .evo-id {
+    opacity: 0.5;
   }
 `;
+
+export { Container, Type };

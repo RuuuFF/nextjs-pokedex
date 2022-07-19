@@ -9,7 +9,7 @@ import Div from "../../utils/customDiv";
 import { formatText, formatId, getPokemonImageSource } from "../../utils";
 
 import Picture from "../Picture";
-import { Card, Button, Pokeball } from "./style";
+import { Card, Button, Pokeball, Type } from "./style";
 
 export default function CardList({ pokemonList }) {
   const [pokemons, setPokemons] = useState(pokemonList);
@@ -70,9 +70,9 @@ export default function CardList({ pokemonList }) {
                       gap="var(--space-2)"
                     >
                       {types.map((type) => (
-                        <div key={type} className={`type ${type}`}>
+                        <Type key={type} className={type}>
                           {formatText(type)}
-                        </div>
+                        </Type>
                       ))}
                     </Div>
                   </Div>

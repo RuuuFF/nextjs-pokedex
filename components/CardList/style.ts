@@ -90,16 +90,6 @@ export const Card = styled.div`
     margin-bottom: var(--space-4);
   }
 
-  .type {
-    color: var(--white);
-    text-align: center;
-    font-size: var(--small);
-    width: 80px;
-    padding: 0.2rem 0;
-    border-radius: 4px;
-    ${pokemonColorTypes}
-  }
-
   &:hover {
     .image-wrapper {
       transform: translateY(-4px);
@@ -109,6 +99,16 @@ export const Card = styled.div`
       opacity: 0.2;
     }
   }
+`;
+
+export const Type = styled.div<{ fs?: string; width?: string }>`
+  color: var(--white);
+  text-align: center;
+  font-size: ${(props) => (props.fs ? props.fs : "var(--small)")};
+  width: ${(props) => (props.width ? props.width : "80px")};
+  padding: 0.2rem 0;
+  border-radius: 4px;
+  ${pokemonColorTypes}
 `;
 
 export const Button = styled.button`

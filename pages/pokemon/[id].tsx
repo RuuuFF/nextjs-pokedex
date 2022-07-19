@@ -1,7 +1,7 @@
 import { getPokemon } from "../../utils/pokedex";
 import MyLayout from "../../components/MyLayout";
 import ErrorCard from "../../components/ErrorCard";
-import PokemonPage from "../../components/PokemonPage";
+import PokePage from "../../components/PokePage";
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
 export default function Pokemon({ pokemon, error }) {
   return (
     <MyLayout>
-      {!error ? <PokemonPage pokemon={pokemon} /> : <ErrorCard error={error} />}
+      {!error ? <PokePage pokemon={pokemon} /> : <ErrorCard error={error} />}
     </MyLayout>
   );
 }

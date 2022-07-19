@@ -5,7 +5,7 @@ import MyPicture from "../MyPicture";
 import Div from "../../utils/customDiv";
 import { Container, Type } from "./style";
 
-export default function PokeEvolutions({ evolutions, currentPoke }) {
+export default function Evolutions({ evolutions, currentPoke }) {
   return (
     <Container>
       <Div my="var(--space-4)">

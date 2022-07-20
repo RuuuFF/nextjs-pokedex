@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import {
   initialLength,
@@ -13,11 +13,13 @@ import { Card, Button, Pokeball, Type } from "./style";
 export default function CardList({ pokemonList }) {
   const [pokemons, setPokemons] = useState(pokemonList);
   const [startFrom, setStartFrom] = useState(initialLength + 1);
-  const [hideButton, setHideButton] = useState(false);
+  const [scrollLoad, setScrollLoad] = useState(false);
   const [loading, setLoading] = useState(false);
-  const length = 23;
+  const length = 14;
 
-  async function fetchPokemons() {
+  const [hideFooter, setHideFooter] = useState(false);
+
+  const fetchPokemons = useCallback(async () => {
     setLoading(true);
     const { pokemonList: morePokemons, error } = await getPokemonList(
       startFrom,
@@ -25,9 +27,35 @@ export default function CardList({ pokemonList }) {
     );
     setPokemons([...pokemons, ...morePokemons]);
     setLoading(false);
-    if (error) return setHideButton(true);
+    if (error) {
+      setScrollLoad(false);
+      setHideFooter(true);
+      return;
+    }
     setStartFrom(startFrom + length + 1);
+  }, [startFrom, pokemons]);
+
+  function handleClick() {
+    setScrollLoad(true);
+    fetchPokemons();
   }
+
+  const scroll = useCallback(() => {
+    const screenHeight = window.innerHeight;
+    const bodyBottom = Math.floor(document.body.getBoundingClientRect().bottom);
+
+    if (bodyBottom === screenHeight && scrollLoad && !loading) {
+      fetchPokemons();
+    }
+  }, [fetchPokemons, scrollLoad, loading]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", scroll);
+
+    return () => {
+      window.removeEventListener("scroll", scroll);
+    };
+  }, [scrollLoad, scroll]);
 
   return (
     <div>
@@ -81,13 +109,15 @@ export default function CardList({ pokemonList }) {
           );
         })}
       </Div>
-      <Div display="flex" justifyContent="center" mt="var(--space-6)">
-        {!loading ? (
-          !hideButton && <Button onClick={fetchPokemons}>LOAD MORE</Button>
-        ) : (
-          <Pokeball />
-        )}
-      </Div>
+      {!hideFooter && (
+        <Div display="flex" justifyContent="center" mt="var(--space-6)">
+          {!scrollLoad ? (
+            <Button onClick={handleClick}>LOAD MORE</Button>
+          ) : (
+            <Pokeball loading={loading.toString()} />
+          )}
+        </Div>
+      )}
     </div>
   );
 }

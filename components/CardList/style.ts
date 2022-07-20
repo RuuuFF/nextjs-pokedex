@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { pokemonColorTypes } from "../../styles/pokemonColors";
 
 export const Card = styled.div`
@@ -136,14 +136,19 @@ const rotate = keyframes`
   to { transform: rotate(360deg) }
 `;
 
-export const Pokeball = styled.div`
+export const Pokeball = styled.div<{ loading: string }>`
   position: relative;
   background: linear-gradient(to bottom, #f00 50%, #fff 50%);
   width: 3.8rem;
   height: 3.8rem;
   border-radius: 50%;
   box-shadow: 0 0 15px #00000088;
-  animation: ${rotate} 2s linear infinite;
+  ${({ loading }) =>
+    loading === "true"
+      ? css`
+          animation: ${rotate} 2s linear infinite;
+        `
+      : ""};
 
   &::after,
   &::before {

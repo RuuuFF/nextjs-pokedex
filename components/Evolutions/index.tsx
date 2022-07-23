@@ -42,7 +42,7 @@ export default function Evolutions({ evolutions, currentPoke }) {
                   gap="var(--space-2)"
                   mt="var(--space-2)"
                 >
-                  {types.map((type) => {
+                  {types?.map((type) => {
                     return (
                       <Type key={type} className={type}>
                         {formatText(type)}

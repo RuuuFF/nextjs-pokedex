@@ -51,6 +51,7 @@ export async function getPokemonList(startFrom?: number, length?: number) {
 
 async function getEvoTypes(name: string) {
   const pokeEvoRes = await fetch(BASE_URL + name);
+  if (!pokeEvoRes.ok) return null;
   const pokeEvoData = await pokeEvoRes.json();
   return formatTypesArray(pokeEvoData);
 }
@@ -74,7 +75,8 @@ export async function getPokemon(query: string): Promise<GetPokemonProps> {
 
     do {
       const id = getIdFromURL(evoData.species.url);
-      const name = evoData.species.name;
+      const evoName = evoData.species.name;
+      const name = evoName === query.split("-")[0] ? query : evoName;
       const types = await getEvoTypes(name);
       let numberOfEvolutions = evoData["evolves_to"].length;
 

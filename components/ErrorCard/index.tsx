@@ -2,7 +2,13 @@ import Head from "next/head";
 import Picture from "../Picture";
 import Div from "../../utils/customDiv";
 
-export default function ErrorCard({ error }) {
+interface ErrorCardProps {
+  error: {
+    query: string;
+  };
+}
+
+export default function ErrorCard({ error }: ErrorCardProps) {
   const message = `Can\'t find \"${error.query}\"`;
   return (
     <Div

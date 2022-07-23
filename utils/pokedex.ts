@@ -19,6 +19,7 @@ export interface PokemonProps extends PokemonCardProps {
   evolution_chain: {
     id: string;
     name: string;
+    types: string[];
   }[];
 }
 

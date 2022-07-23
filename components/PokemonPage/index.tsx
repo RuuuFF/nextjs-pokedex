@@ -12,7 +12,11 @@ import Div from "../../utils/customDiv";
 import Evolutions from "../Evolutions";
 import { Container, Type } from "./style";
 
-export default function PokemonPage({ pokemon }: { pokemon: PokemonProps }) {
+interface PokemonPageProps {
+  pokemon: PokemonProps;
+}
+
+export default function PokemonPage({ pokemon }: PokemonPageProps) {
   const { id, name, types, stats, weight, height, abilities, evolution_chain } =
     pokemon;
   const formattedName = formatText(name);

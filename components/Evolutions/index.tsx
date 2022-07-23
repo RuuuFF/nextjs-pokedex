@@ -5,7 +5,19 @@ import Picture from "../Picture";
 import Div from "../../utils/customDiv";
 import { Container, Type } from "./style";
 
-export default function Evolutions({ evolutions, currentPoke }) {
+interface EvolutionsProps {
+  evolutions: {
+    id: string;
+    name: string;
+    types: string[];
+  }[];
+  currentPoke: string;
+}
+
+export default function Evolutions({
+  evolutions,
+  currentPoke,
+}: EvolutionsProps) {
   return (
     <Container>
       <Div my="var(--space-4)">

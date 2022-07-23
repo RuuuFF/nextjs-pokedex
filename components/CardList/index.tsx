@@ -10,7 +10,11 @@ import Div from "../../utils/customDiv";
 import { formatText, formatId, getPokemonImageSource } from "../../utils";
 import { Card, Button, Pokeball, Type } from "./style";
 
-export default function CardList({ pokemonList }) {
+interface CardListProps {
+  pokemonList: PokemonCardProps[];
+}
+
+export default function CardList({ pokemonList }: CardListProps) {
   const [pokemons, setPokemons] = useState(pokemonList);
   const [startFrom, setStartFrom] = useState(initialLength + 1);
   const [scrollLoad, setScrollLoad] = useState(false);

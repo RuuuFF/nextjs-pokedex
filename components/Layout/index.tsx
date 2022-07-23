@@ -6,13 +6,12 @@ import { Header } from "./style";
 
 export const siteTitle = "Next.js Pokédex | ruuuff";
 
-export default function Layout({
-  children,
-  home,
-}: {
-  children?: any;
+interface LayoutProps {
+  children: any;
   home?: boolean;
-}) {
+}
+
+export default function Layout({ children, home }: LayoutProps) {
   return (
     <Div bg="var(--bg-color) fixed" minHeight="100vh">
       <Head>
